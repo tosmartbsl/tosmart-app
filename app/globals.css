@@ -387,3 +387,23 @@ button { color:inherit; }
   .landing-simplified .hero-copy h1 { font-size:40px; }
   .landing-simplified .hero-buttons { flex-wrap:wrap; }
 }
+
+/* Tosco coffee category & Daftar Pesanan Tosco */
+.mini-product.coffee,.pos-product-art.coffee { background:#F5EFEB; color:#6B4728; }
+.pos-categories .tosco-pill { display:inline-flex; align-items:center; gap:6px; border:1px solid #E5D7CA; background:#F5EFEB; color:#5F3E22; font-weight:700; transition:background .18s,border-color .18s,color .18s,transform .15s; }
+.pos-categories .tosco-pill:hover { transform:translateY(-1px); border-color:#D9C4AE; background:#EFE5DB; }
+.pos-categories .tosco-pill.selected { background:#6B4728; border-color:#6B4728; color:#fff; }
+.orders-summary small { color:#898480; font-size:9px; }
+.orders-toolbar { flex-wrap:wrap; }
+.orders-reset { border:0; background:transparent; color:#85664B; font-size:9px; font-weight:650; cursor:pointer; padding:0 6px; }
+.order-items { display:flex; flex-wrap:wrap; gap:5px; max-width:360px; }
+.coffee-badge { display:inline-flex; align-items:center; gap:4px; padding:4px 8px; border:1px solid #E3D5C8; border-radius:20px; background:#F5EFEB; color:#5C3D22; font-size:8px; font-weight:700; white-space:nowrap; }
+.muted-item-tag { display:inline-flex; align-items:center; gap:4px; padding:4px 8px; border:1px solid #EDEAE8; border-radius:20px; background:#FAF9F8; color:#8C837C; font-size:8px; white-space:nowrap; }
+.tosco-amount { color:#6B4728; }
+.orders-table small { color:#9B9794; font-size:8px; }
+.orders-empty { display:grid; justify-items:center; gap:8px; padding:56px 24px; text-align:center; }
+.orders-empty-icon { display:grid; place-items:center; width:52px; height:52px; border:1px solid #E5D7CA; border-radius:50%; background:#F5EFEB; color:#6B4728; }
+.orders-empty b { color:#4A4038; font-size:13px; }
+.orders-empty p { max-width:420px; margin:0; color:#8F8A86; font-size:10px; line-height:1.7; }
+.orders-empty .export-button { margin-top:8px; min-height:38px; padding:0 16px; font-size:10px; }
+@media (max-width:760px) { .order-items { max-width:none; } }

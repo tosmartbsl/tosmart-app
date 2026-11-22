@@ -5,10 +5,11 @@ import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Activity, ArrowDown, ArrowLeftRight, ArrowUp, Check, ChevronRight, CircleDollarSign, ClipboardList, Download, FileText, Package, Plus, Search, ShieldAlert, ShoppingCart, Truck, X } from 'lucide-react'
 import { AppSidebar, Topbar } from './dashboard-shell'
+import { ensureToscoProducts } from '@/lib/tosco'
 
 type User = { name: string; email: string; role: string }
 type Product = { id: number; name: string; sku: string; category: string; price: number; cost: number; stock: number; min: number; status: boolean; unit: string }
-type SaleItem = { id: number; name: string; sku: string; quantity: number; price: number }
+type SaleItem = { id: number; name: string; sku: string; quantity: number; price: number; category?: string }
 type Sale = { invoice: string; date: string; total: number; payment: string; status?: string; customer?: string; cashier?: string; items?: SaleItem[] }
 type Purchase = { id: string; supplier: string; date: string; total: number; status: 'Draft' | 'Pending' | 'Approved' | 'Ordered' | 'Partially Received' | 'Received' | 'Cancelled'; items: { productId: number; name: string; quantity: number; received: number; price: number }[] }
 type Movement = { id: string; date: string; product: string; sku: string; kind: string; quantity: number; reason: string; warehouse: string }
@@ -51,7 +52,7 @@ export default function PhaseThreeWorkspace() {
   useEffect(() => {
     const raw = localStorage.getItem('tosmart-session')
     if (raw) { try { setUser(JSON.parse(raw) as User) } catch { localStorage.removeItem('tosmart-session') } }
-    setProducts(read('tosmart-products', initialProducts))
+    setProducts(ensureToscoProducts(read('tosmart-products', initialProducts)))
     setSales(read<Sale[]>('tosmart-sales', []))
     setPurchases(read<Purchase[]>('tosmart-purchases', []))
     setMovements(read<Movement[]>('tosmart-stock-movements', []))
