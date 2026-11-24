@@ -457,10 +457,18 @@ button { color:inherit; }
 .order-status-cell { display:flex; flex-direction:column; align-items:flex-start; gap:7px; white-space:nowrap; }
 .order-status-badge { display:inline-flex; min-height:24px; align-items:center; padding:0 9px; border:1px solid transparent; border-radius:999px; font-size:8px; font-weight:750; }
 .order-status-badge.is-waiting { border-color:#FED7AA; background:#FFEDD5; color:#C2410C; }
-.order-status-badge.is-ready { border-color:#BBF7D0; background:#DCFCE7; color:#15803D; }
-.order-ready-button { display:inline-flex; min-height:29px; align-items:center; justify-content:center; gap:5px; padding:0 9px; border:1px solid #86EFAC; border-radius:6px; background:#F0FDF4; color:#15803D; font-size:8px; font-weight:700; cursor:pointer; transition:background .15s,border-color .15s; }
-.order-ready-button:hover { border-color:#4ADE80; background:#DCFCE7; }
-.order-ready-button:focus-visible { outline:3px solid #22C55E55; outline-offset:2px; }
+.order-status-badge.is-ready,.order-status-badge.is-completed { border-color:#BBF7D0; background:#DCFCE7; color:#15803D; }
+.order-ready-button { display:inline-flex; min-height:32px; align-items:center; justify-content:center; gap:6px; padding:0 11px; border:1px solid #19763B; border-radius:8px; background:linear-gradient(135deg,#218447,#146532); color:#fff; box-shadow:0 2px 5px #14532d24; font-size:9px; font-weight:750; cursor:pointer; transition:transform .16s,box-shadow .16s,background .16s; }
+.order-ready-button:hover { transform:translateY(-1px); background:linear-gradient(135deg,#176F39,#10572A); box-shadow:0 5px 12px #14532d30; }
+.order-ready-button:active { transform:translateY(0); }
+.order-ready-button:focus-visible { outline:3px solid #22C55E66; outline-offset:2px; }
+.orders-toast { overflow:hidden; gap:10px; padding:12px 16px 14px 12px; border-color:#d8e9dc; border-radius:12px; background:#fff; color:#355b3e; box-shadow:0 12px 32px #24432d22; animation:orders-toast-in .24s ease-out both; }
+.orders-toast-icon { display:grid; flex:none; place-items:center; width:27px; height:27px; border:1px solid #cce7d2; border-radius:50%; background:#eff9f1; color:#19763B; }
+.orders-toast>span:nth-child(2) { font-size:10px; font-weight:650; }
+.orders-toast-progress { position:absolute; right:0; bottom:0; left:0; height:3px; background:#e4f2e6; transform-origin:left; animation:orders-toast-progress 2.2s linear forwards; }
+@keyframes orders-toast-in { from { opacity:0; transform:translateY(8px) scale(.98); } to { opacity:1; transform:translateY(0) scale(1); } }
+@keyframes orders-toast-progress { to { transform:scaleX(0); } }
+@media (prefers-reduced-motion:reduce) { .orders-toast,.orders-toast-progress { animation-duration:.01ms; } }
 @media print {
   @page { margin:0; }
   html, body { width:100%; min-width:0; margin:0!important; padding:0!important; background:#fff!important; }

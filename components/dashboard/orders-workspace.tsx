@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Check, Coffee, Package, Search } from 'lucide-react'
@@ -10,7 +10,7 @@ import { TOSCO_CATEGORY, ensureToscoProducts } from '@/lib/tosco'
 type User = { name: string; email: string; role: string }
 type Product = { id: number; name: string; sku: string; category: string }
 type SaleItem = { id: number; name: string; sku: string; quantity: number; price: number; category?: string }
-type Sale = { invoice: string; date: string; total: number; payment: string; status?: string; orderStatus?: 'waiting' | 'ready'; customer?: string; cashier?: string; items?: SaleItem[] }
+type Sale = { invoice: string; date: string; total: number; payment: string; status?: string; orderStatus?: 'waiting' | 'ready' | 'completed'; customer?: string; cashier?: string; items?: SaleItem[] }
 type OrderRow = { sale: Sale; toscoItems: SaleItem[]; otherItems: SaleItem[]; toscoTotal: number; toscoQty: number }
 
 const currency = (value: number) => `Rp ${value.toLocaleString('id-ID')}`
@@ -43,6 +43,8 @@ export default function OrdersWorkspace() {
   const [dateRange, setDateRange] = useState(dateRanges[0])
   const [payment, setPayment] = useState(paymentMethods[0])
   const [notice, setNotice] = useState('')
+  const noticeTimer = useRef<number | null>(null)
+  useEffect(() => () => { if (noticeTimer.current) window.clearTimeout(noticeTimer.current) }, [])
   useEffect(() => {
     const raw = localStorage.getItem('tosmart-session')
     if (raw) { try { setUser(JSON.parse(raw) as User) } catch { localStorage.removeItem('tosmart-session') } }
@@ -52,10 +54,14 @@ export default function OrdersWorkspace() {
   }, [])
   useEffect(() => { if (ready) localStorage.setItem('tosmart-sales', JSON.stringify(sales)) }, [sales, ready])
   useEffect(() => { if (ready && !user) router.replace('/login') }, [ready, user, router])
-  const tell = (message: string) => { setNotice(message); window.setTimeout(() => setNotice(''), 2800) }
-  const markOrderReady = (invoice: string) => {
-    setSales(current => current.map(sale => sale.invoice === invoice ? { ...sale, orderStatus: 'ready' } : sale))
-    tell('Pesanan ditandai siap diambil.')
+  const tell = (message: string) => {
+    if (noticeTimer.current) window.clearTimeout(noticeTimer.current)
+    setNotice(message)
+    noticeTimer.current = window.setTimeout(() => { setNotice(''); noticeTimer.current = null }, 2200)
+  }
+  const markOrderCompleted = (invoice: string) => {
+    setSales(current => current.map(sale => sale.invoice === invoice ? { ...sale, orderStatus: 'completed' } : sale))
+    tell('Status pesanan berhasil diubah menjadi selesai.')
   }
   const rows = useMemo<OrderRow[]>(() => sales.flatMap(sale => {
     const items = sale.items || []
@@ -109,12 +115,12 @@ export default function OrdersWorkspace() {
             <td><div className="order-items">{row.toscoItems.map(item => <span key={`tosco-${item.id}-${item.sku}`} className="coffee-badge" data-testid="order-coffee-badge"><Coffee size={12}/>{item.name} × {item.quantity}</span>)}{row.otherItems.map(item => <span key={`other-${item.id}-${item.sku}`} className="muted-item-tag"><Package size={11}/>{item.name} × {item.quantity}</span>)}</div></td>
             <td><b>{currency(row.sale.total)}</b></td>
             <td><b className="tosco-amount">{currency(row.toscoTotal)}</b><br/><small>{row.toscoQty} cup kopi</small></td>
-            <td><div className="order-status-cell"><span data-testid={`orders-status-${row.sale.invoice}`} className={`order-status-badge ${row.sale.orderStatus === 'waiting' ? 'is-waiting' : 'is-ready'}`}>{row.sale.orderStatus === 'waiting' ? 'Dalam pembuatan' : row.sale.orderStatus === 'ready' ? 'Siap diambil' : row.sale.status || 'Selesai'}</span>{row.sale.orderStatus === 'waiting' && <button type="button" className="order-ready-button" data-testid={`orders-ready-${row.sale.invoice}`} aria-label={`Tandai pesanan ${row.sale.invoice} siap diambil`} onClick={() => markOrderReady(row.sale.invoice)}><Check size={13}/>Tandai siap</button>}</div></td>
+            <td><div className="order-status-cell"><span data-testid={`orders-status-${row.sale.invoice}`} className={`order-status-badge ${row.sale.orderStatus === 'waiting' ? 'is-waiting' : row.sale.orderStatus === 'completed' ? 'is-completed' : 'is-ready'}`}>{row.sale.orderStatus === 'waiting' ? 'Dalam pembuatan' : row.sale.orderStatus === 'completed' ? 'Selesai' : row.sale.orderStatus === 'ready' ? 'Siap diambil' : row.sale.status || 'Selesai'}</span>{row.sale.orderStatus === 'waiting' && <button type="button" className="order-ready-button" data-testid={`orders-ready-${row.sale.invoice}`} aria-label={`Tandai pesanan ${row.sale.invoice} siap diambil`} onClick={() => markOrderCompleted(row.sale.invoice)}><Check size={13}/>Tandai siap</button>}</div></td>
           </tr>)}</tbody>
         </table></div>
         <div className="table-bottom">Menampilkan {visible.length} pesanan kategori Tosco <span>Item non-kopi tetap ditampilkan sebagai bagian transaksi</span></div>
       </> : <div className="orders-empty" data-testid="orders-empty-state"><span className="orders-empty-icon"><Coffee size={26}/></span><b>Belum ada transaksi kopi Tosco</b><p>Transaksi kasir POS yang memesan menu kategori Tosco akan otomatis tercatat dan tersaring di halaman ini.</p><Link href="/pos" className="export-button" data-testid="orders-empty-pos-button" onClick={() => tell('Pilih menu kopi di katalog Kasir POS lalu selesaikan pembayaran.')}>Buat pesanan kopi di POS</Link></div>}
     </div>
-    {notice && <div className="phase-toast" role="status"><Check size={16}/>{notice}</div>}
+    {notice && <div className="phase-toast orders-toast" role="status" aria-live="polite" data-testid="orders-toast"><span className="orders-toast-icon"><Check size={15}/></span><span>{notice}</span><span className="orders-toast-progress" aria-hidden="true"/></div>}
   </main></div></div>
 }
