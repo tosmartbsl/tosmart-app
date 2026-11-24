@@ -407,3 +407,68 @@ button { color:inherit; }
 .orders-empty p { max-width:420px; margin:0; color:#8F8A86; font-size:10px; line-height:1.7; }
 .orders-empty .export-button { margin-top:8px; min-height:38px; padding:0 16px; font-size:10px; }
 @media (max-width:760px) { .order-items { max-width:none; } }
+
+/* POS checkout details and receipt */
+.pos-customer-fields { display:grid; gap:10px; padding:13px 0 12px; margin-top:13px; border-top:1px solid #edf0ed; }
+.pos-customer-fields label { display:grid; gap:6px; color:#625950; font-size:9px; font-weight:650; }
+.pos-customer-fields label>span { color:#a29b95; font-size:8px; font-weight:450; }
+.pos-customer-fields input { width:100%; min-width:0; height:36px; padding:0 10px; border:1px solid #ebe7e3; border-radius:7px; outline-color:#b4a08e; background:#fff; color:#493f37; font:inherit; font-size:10px; }
+.pos-customer-fields input::placeholder { color:#aaa39d; }
+.receipt-modal { width:min(520px,100%); max-height:min(88svh,760px); overflow-y:auto; padding:0; border-color:#eee8e2; border-radius:15px; }
+.receipt-brand { display:flex; align-items:center; gap:10px; padding:17px 22px 13px; border-bottom:1px solid #f1eeeb; }
+.receipt-brand-mark { display:grid; place-items:center; width:34px; height:34px; border-radius:11px; background:#6b4728; color:#fff9f2; font-size:18px; font-weight:800; letter-spacing:-1px; }
+.receipt-brand>span:last-child { display:grid; gap:3px; }
+.receipt-brand b { color:#44382e; font-size:13px; letter-spacing:-.3px; }
+.receipt-brand small { color:#9a8a7b; font-size:7px; font-weight:750; letter-spacing:1.15px; }
+.receipt-success { padding:20px 18px 17px; background:linear-gradient(180deg,#fbf8f5,#fff); }
+.receipt-success>span { width:46px; height:46px; border:1px solid #ece2d8; background:#f5eee7; color:#79583b; }
+.receipt-success h2 { margin:12px 0 5px; color:#40342b; font-size:20px; letter-spacing:-.55px; }
+.receipt-success p { color:#8f8780; font-size:10px; }
+.receipt-meta { grid-template-columns:minmax(95px,1fr) minmax(0,1.45fr); gap:10px 16px; padding:16px 22px; }
+.receipt-meta span { color:#938b84; font-size:9px; }
+.receipt-meta b { overflow-wrap:anywhere; color:#50463e; font-size:9px; text-align:right; }
+.receipt-items { gap:0; padding:4px 22px; }
+.receipt-items>div { align-items:flex-start; padding:11px 0; border-bottom:1px dashed #eee9e5; color:#584f48; font-size:10px; }
+.receipt-items>div>span { display:grid; gap:4px; min-width:0; }
+.receipt-items>div>span b { color:#51473f; font-size:10px; font-weight:600; }
+.receipt-items>div>span small { color:#99918a; font-size:8px; }
+.receipt-items>div>strong { flex:none; color:#51473f; font-size:10px; }
+.receipt-total { padding:15px 22px; border-top:0; border-bottom:1px solid #f1eeeb; color:#594a3d; font-size:10px; }
+.receipt-total b { color:#684525; font-size:18px; letter-spacing:-.3px; }
+.receipt-actions { flex-wrap:wrap; padding:0 22px 20px; margin-top:16px; }
+.receipt-actions>button { display:flex; flex:1 1 auto; align-items:center; justify-content:center; gap:7px; min-height:39px; padding:0 11px; border-radius:7px; font-size:9px; white-space:nowrap; cursor:pointer; }
+.receipt-actions>button:first-child { border:1px solid #e9e3dd; background:#fff; color:#766d65; }
+.receipt-whatsapp-button { border:1px solid #dfd4c8; background:#f7f2ed; color:#694a30; font-weight:650; }
+.receipt-whatsapp-button:hover { background:#efe6dd; }
+@media (max-width:430px) {
+  .pos-customer-fields { gap:9px; }
+  .receipt-modal { width:min(100%,390px); border-radius:13px; }
+  .receipt-brand { padding:14px 17px 11px; }
+  .receipt-meta { gap:9px 12px; padding:14px 17px; }
+  .receipt-items { padding-right:17px; padding-left:17px; }
+  .receipt-total { padding-right:17px; padding-left:17px; }
+  .receipt-actions { gap:6px; padding-right:17px; padding-left:17px; }
+  .receipt-actions>button { min-width:calc(50% - 6px); padding:0 8px; font-size:8px; }
+}
+@media print {
+  @page { margin:0; }
+  html, body { width:100%; min-width:0; margin:0!important; padding:0!important; background:#fff!important; }
+  body * { visibility:hidden!important; }
+  .receipt-backdrop, .receipt-backdrop * { visibility:visible!important; }
+  .receipt-backdrop { position:absolute!important; inset:0 auto auto 0!important; display:block!important; width:100%!important; padding:0!important; background:#fff!important; }
+  .receipt-modal { position:static!important; width:72mm!important; max-width:100%!important; max-height:none!important; overflow:visible!important; padding:6mm!important; margin:0!important; border:0!important; border-radius:0!important; background:#fff!important; box-shadow:none!important; }
+  .receipt-brand { padding:0 0 4mm; }
+  .receipt-success { padding:5mm 0; background:#fff!important; }
+  .receipt-success>span { width:10mm; height:10mm; }
+  .receipt-success h2 { font-size:15pt; }
+  .receipt-success p { font-size:8pt; }
+  .receipt-meta { gap:2mm 3mm; padding:4mm 0; }
+  .receipt-meta span,.receipt-meta b { font-size:7pt; }
+  .receipt-items { padding:2mm 0; }
+  .receipt-items>div,.receipt-items>div>span b,.receipt-items>div>strong { font-size:8pt; }
+  .receipt-items>div>span small { font-size:7pt; }
+  .receipt-total { padding:4mm 0; }
+  .receipt-total span { font-size:8pt; }
+  .receipt-total b { font-size:13pt; }
+  .receipt-actions { display:none!important; }
+}
