@@ -22,7 +22,7 @@ const copy: Record<AuthMode, { eyebrow: string; title: string; description: stri
 function AuthBrand() {
   return (
     <Link href="/" className="brand" aria-label="Tosmart beranda">
-      <Image src="/tosmart-full.png" alt="Tosmart" width={772} height={301} priority className="brand-logo" />
+      <Image src="/tosmart-full.png" alt="Tosmart" width={154} height={58} className="brand-logo" priority />
     </Link>
   )
 }

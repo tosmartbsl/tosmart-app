@@ -2,37 +2,13 @@
 
 import Image from 'next/image'
 import { useState } from 'react'
-import { Coffee, Croissant, Package, Wheat } from 'lucide-react'
+import { Coffee, Croissant, Package, ShoppingBag, Store, Wheat } from 'lucide-react'
 
 const products = [
-  {
-    id: 'groceries',
-    label: 'Sembako',
-    note: 'Kebutuhan pokok',
-    detail: 'Beras, minyak, telur, dan kebutuhan harian lainnya.',
-    Icon: Wheat,
-  },
-  {
-    id: 'bakery',
-    label: 'Roti',
-    note: 'Roti & camilan',
-    detail: 'Aneka roti dan camilan untuk teman setiap hari.',
-    Icon: Croissant,
-  },
-  {
-    id: 'coffee',
-    label: 'Kopi',
-    note: 'Kopi & minuman',
-    detail: 'Kopi, minuman dingin, dan teman santai lainnya.',
-    Icon: Coffee,
-  },
-  {
-    id: 'essentials',
-    label: 'Lainnya',
-    note: 'Produk harian',
-    detail: 'Beragam produk rumah tangga dari toko sekitar.',
-    Icon: Package,
-  },
+  { id: 'groceries', label: 'Sembako', note: 'Kebutuhan pokok', detail: 'Beras, minyak, telur, dan kebutuhan harian lainnya.', Icon: Wheat },
+  { id: 'bakery', label: 'Roti', note: 'Roti & camilan', detail: 'Aneka roti dan camilan untuk teman setiap hari.', Icon: Croissant },
+  { id: 'coffee', label: 'Kopi', note: 'Kopi & minuman', detail: 'Kopi, minuman dingin, dan teman santai lainnya.', Icon: Coffee },
+  { id: 'essentials', label: 'Lainnya', note: 'Produk harian', detail: 'Beragam produk rumah tangga dari toko sekitar.', Icon: Package },
 ]
 
 type ProductShowcaseProps = {
@@ -45,47 +21,43 @@ export default function ProductShowcase({ variant = 'landing' }: ProductShowcase
   const ActiveIcon = activeProduct.Icon
 
   return (
-    <section className={`product-showcase product-showcase-${variant}`} aria-label="Jelajahi kategori produk toko">
+    <section className={`product-showcase product-showcase-${variant}`} aria-label="Etalase kebutuhan toko harian">
       <div className="product-showcase-heading">
         <div>
-          <span className="product-showcase-eyebrow">ETALASE TOKO HARIAN</span>
-          <h2>Pilih yang kamu cari</h2>
+          <span className="product-showcase-eyebrow">CERITA TOKO HARIAN</span>
+          <h2>Semua kebutuhan, satu toko.</h2>
         </div>
-        <span className="product-showcase-hint">Sentuh kartu untuk melihat</span>
+        <span className="product-showcase-hint">Belanja lokal, lebih mudah</span>
       </div>
 
-      <div className="product-showcase-photo">
+      <div className="showcase-photo">
         <Image
           src="/cashier-experience.png"
-          alt="Aneka sembako, roti, kopi, minuman, dan kebutuhan toko"
+          alt="Aneka bahan pokok, roti, minuman, dan kebutuhan rumah untuk toko harian"
           fill
-          priority={variant === 'landing'}
-          sizes={variant === 'landing' ? '(max-width: 760px) 100vw, 52vw' : '(max-width: 760px) 100vw, 50vw'}
-          className="product-showcase-image"
+          loading="eager"
+          sizes={variant === 'landing' ? '(max-width: 760px) 100vw, 55vw' : '(max-width: 760px) 100vw, 42vw'}
+          className="showcase-product-image"
         />
-        <div className="product-showcase-photo-shade" />
-        <span className="product-showcase-photo-label">Kebutuhan sehari-hari, semua ada</span>
-        <div key={activeProduct.id} className="product-detail-card" aria-live="polite">
-          <span className="product-detail-icon"><ActiveIcon size={18} strokeWidth={1.8} /></span>
-          <span className="product-detail-copy">
-            <small>KATEGORI PILIHAN</small>
-            <strong>{activeProduct.label}</strong>
-            <span>{activeProduct.detail}</span>
-          </span>
-          <span className="product-detail-index">0{products.findIndex((product) => product.id === activeProduct.id) + 1}</span>
+        <span className="showcase-photo-shade" aria-hidden="true" />
+        <span className="showcase-photo-stamp"><ShoppingBag size={14} /> Pilihan toko harian</span>
+        <div className="showcase-photo-caption">
+          <span className="showcase-caption-icon"><Store size={17} /></span>
+          <span><small>RAPI, SIAP MELAYANI</small><strong>Temukan kebutuhan tokomu.</strong></span>
         </div>
       </div>
 
-      <div key={`mobile-${activeProduct.id}`} className="product-mobile-detail" aria-live="polite">
-        <span className="product-detail-icon"><ActiveIcon size={17} strokeWidth={1.8} /></span>
+      <div className="product-detail-card" aria-live="polite">
+        <span className="product-detail-icon"><ActiveIcon size={18} strokeWidth={1.8} /></span>
         <span className="product-detail-copy">
           <small>KATEGORI PILIHAN</small>
           <strong>{activeProduct.label}</strong>
           <span>{activeProduct.detail}</span>
         </span>
+        <span className="product-detail-index">0{products.findIndex((product) => product.id === activeProduct.id) + 1}</span>
       </div>
 
-      <div className="product-category-grid" role="group" aria-label="Kategori produk">
+      <div className="product-category-grid" role="group" aria-label="Pilih kategori produk">
         {products.map(({ id, label, note, Icon }) => (
           <button
             key={id}

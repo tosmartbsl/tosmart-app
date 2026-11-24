@@ -6,7 +6,7 @@ import ProductShowcase from '@/components/landing/product-showcase'
 function Brand() {
   return (
     <Link href="/" className="brand" aria-label="Tosmart beranda">
-      <Image src="/tosmart-full.png" alt="Tosmart" width={772} height={301} priority className="brand-logo" />
+      <Image src="/tosmart-full.png" alt="Tosmart" width={154} height={58} className="brand-logo" priority />
     </Link>
   )
 }
@@ -28,10 +28,10 @@ export default function LandingPage() {
       <section className="hero-section" aria-labelledby="landing-title">
         <div className="hero-inner">
           <div className="hero-copy">
-            <span className="section-kicker">SELAMAT DATANG DI TOSMART APP</span>
-            <h1 id="landing-title">Belanja tanpa drama,<br /><span>transaksi tanpa ribet.</span></h1>
+            <span className="section-kicker">TEMAN TOKO HARIANMU</span>
+            <h1 id="landing-title">Semua urusan toko,<br /><span>jadi lebih tertata.</span></h1>
             <p className="hero-description">
-              Karena waktu lebih baik dihabiskan untuk melayani pelanggan, bukan untuk mengurus transaksi yang rumit.
+              Dari transaksi kasir sampai kelola produk, Tosmart bantu operasional toko harian terasa lebih sederhana.
             </p>
             <div className="hero-buttons">
               <Link href="/register" className="button button-green button-large">
