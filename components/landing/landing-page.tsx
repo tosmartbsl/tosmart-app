@@ -1,12 +1,12 @@
-import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Store } from 'lucide-react'
 import ProductShowcase from '@/components/landing/product-showcase'
 
 function Brand() {
   return (
     <Link href="/" className="brand" aria-label="Tosmart beranda">
-      <Image src="/tosmart-full.png" alt="Tosmart" width={772} height={301} priority className="brand-logo" />
+      <span className="brand-mark" aria-hidden="true"><Store size={18} strokeWidth={1.8} /></span>
+      <span className="brand-wordmark">tosmart<span>.</span></span>
     </Link>
   )
 }
