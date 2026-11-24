@@ -10,7 +10,7 @@ import { TOSCO_CATEGORY, ensureToscoProducts } from '@/lib/tosco'
 type User = { name: string; email: string; role: string }
 type Product = { id: number; name: string; sku: string; category: string }
 type SaleItem = { id: number; name: string; sku: string; quantity: number; price: number; category?: string }
-type Sale = { invoice: string; date: string; total: number; payment: string; status?: string; customer?: string; cashier?: string; items?: SaleItem[] }
+type Sale = { invoice: string; date: string; total: number; payment: string; status?: string; orderStatus?: 'waiting' | 'ready'; customer?: string; cashier?: string; items?: SaleItem[] }
 type OrderRow = { sale: Sale; toscoItems: SaleItem[]; otherItems: SaleItem[]; toscoTotal: number; toscoQty: number }
 
 const currency = (value: number) => `Rp ${value.toLocaleString('id-ID')}`
@@ -50,8 +50,13 @@ export default function OrdersWorkspace() {
     setSales(read<Sale[]>('tosmart-sales', []))
     setReady(true)
   }, [])
+  useEffect(() => { if (ready) localStorage.setItem('tosmart-sales', JSON.stringify(sales)) }, [sales, ready])
   useEffect(() => { if (ready && !user) router.replace('/login') }, [ready, user, router])
   const tell = (message: string) => { setNotice(message); window.setTimeout(() => setNotice(''), 2800) }
+  const markOrderReady = (invoice: string) => {
+    setSales(current => current.map(sale => sale.invoice === invoice ? { ...sale, orderStatus: 'ready' } : sale))
+    tell('Pesanan ditandai siap diambil.')
+  }
   const rows = useMemo<OrderRow[]>(() => sales.flatMap(sale => {
     const items = sale.items || []
     const toscoItems = items.filter(item => resolveCategory(item, products) === TOSCO_CATEGORY)
@@ -67,7 +72,7 @@ export default function OrdersWorkspace() {
   }), [sales, products])
   const visible = useMemo(() => rows.filter(row => {
     const sale = row.sale
-    const haystack = `${sale.invoice} ${sale.cashier || ''} ${sale.customer || ''}`.toLowerCase()
+    const haystack = `${sale.invoice} ${sale.customer || ''}`.toLowerCase()
     if (query && !haystack.includes(query.toLowerCase())) return false
     if (payment !== paymentMethods[0] && sale.payment !== payment) return false
     if (dateRange === dateRanges[0]) return true
@@ -81,7 +86,7 @@ export default function OrdersWorkspace() {
   const totalRevenue = visible.reduce((sum, row) => sum + row.toscoTotal, 0)
   if (!ready || !user) return <div className="app-loading">Menyiapkan Tosmart…</div>
   return <div className="dashboard-app"><AppSidebar open={menuOpen} onClose={() => setMenuOpen(false)} user={user}/><div className="app-main"><Topbar user={user} onMenu={() => setMenuOpen(true)}/><main className="dashboard-content phase-content">
-    <div className="dashboard-heading phase-heading"><div><div className="breadcrumb"><Link href="/dashboard">OPERASIONAL TOKO</Link><span>›</span><span>DAFTAR PESANAN</span></div><h1>Daftar Pesanan Kopi Tosco</h1><p>Transaksi dari Kasir POS yang memuat item kategori Tosco, disorot untuk barista.</p></div><Link href="/pos" className="export-button" data-testid="orders-open-pos-button"><Coffee size={15}/> Buka Kasir POS</Link></div>
+    <div className="dashboard-heading phase-heading"><div><div className="breadcrumb"><Link href="/dashboard">OPERASIONAL TOKO</Link><span>›</span><span>DAFTAR PESANAN</span></div><h1>Daftar Pesanan Kopi Tosco</h1><p>Pantau pesanan kopi yang sudah dibayar dan tandai siap saat selesai dibuat.</p></div></div>
     <section className="product-summary orders-summary" aria-label="Ringkasan pesanan Tosco">
       <div data-testid="orders-metric-tosco-count"><span>Total pesanan Tosco</span><b>{visible.length}</b><small>Transaksi memuat kopi</small></div>
       <div data-testid="orders-metric-tosco-cups"><span>Cup kopi terjual</span><b>{totalCups}</b><small>Total porsi minuman kopi</small></div>
@@ -89,22 +94,22 @@ export default function OrdersWorkspace() {
     </section>
     <div className="panel product-table-panel orders-panel">
       <div className="product-toolbar orders-toolbar">
-        <label className="product-search"><Search size={16}/><input data-testid="orders-search-input" aria-label="Cari pesanan" placeholder="Cari no. invoice, kasir, atau pelanggan…" value={query} onChange={event => setQuery(event.target.value)}/></label>
+        <label className="product-search"><Search size={16}/><input data-testid="orders-search-input" aria-label="Cari pesanan" placeholder="Cari no. invoice atau pelanggan…" value={query} onChange={event => setQuery(event.target.value)}/></label>
         <select data-testid="orders-filter-date" aria-label="Filter waktu transaksi" value={dateRange} onChange={event => setDateRange(event.target.value)}>{dateRanges.map(option => <option key={option}>{option}</option>)}</select>
         <select data-testid="orders-filter-payment" aria-label="Filter metode pembayaran" value={payment} onChange={event => setPayment(event.target.value)}>{paymentMethods.map(option => <option key={option}>{option}</option>)}</select>
         {(query || dateRange !== dateRanges[0] || payment !== paymentMethods[0]) && <button className="orders-reset" onClick={() => { setQuery(''); setDateRange(dateRanges[0]); setPayment(paymentMethods[0]) }}>Atur ulang</button>}
       </div>
       {visible.length ? <>
         <div className="table-scroll"><table className="product-table orders-table" data-testid="orders-tosco-table">
-          <thead><tr><th scope="col">NO. INVOICE</th><th scope="col">WAKTU</th><th scope="col">KASIR & PELANGGAN</th><th scope="col">ITEM PESANAN</th><th scope="col">TOTAL TRANSAKSI</th><th scope="col">OMZET TOSCO</th><th scope="col">STATUS</th></tr></thead>
+          <thead><tr><th scope="col">NO. INVOICE</th><th scope="col">WAKTU</th><th scope="col">PELANGGAN</th><th scope="col">ITEM PESANAN</th><th scope="col">TOTAL TRANSAKSI</th><th scope="col">OMZET TOSCO</th><th scope="col">STATUS</th></tr></thead>
           <tbody>{visible.map(row => <tr key={row.sale.invoice} data-testid={`orders-row-${row.sale.invoice}`}>
             <td><b>{row.sale.invoice}</b><br/><small data-testid="order-payment-method">{row.sale.payment}</small></td>
             <td>{formatDate(row.sale.date)}<br/><small>{formatTime(row.sale.date)}</small></td>
-            <td>{row.sale.cashier || 'Kasir Tosmart'}<br/><small>{row.sale.customer || 'Pelanggan umum'}</small></td>
+            <td>{row.sale.customer || 'Pelanggan umum'}</td>
             <td><div className="order-items">{row.toscoItems.map(item => <span key={`tosco-${item.id}-${item.sku}`} className="coffee-badge" data-testid="order-coffee-badge"><Coffee size={12}/>{item.name} × {item.quantity}</span>)}{row.otherItems.map(item => <span key={`other-${item.id}-${item.sku}`} className="muted-item-tag"><Package size={11}/>{item.name} × {item.quantity}</span>)}</div></td>
             <td><b>{currency(row.sale.total)}</b></td>
             <td><b className="tosco-amount">{currency(row.toscoTotal)}</b><br/><small>{row.toscoQty} cup kopi</small></td>
-            <td><span className="status-pill">{row.sale.status || 'Selesai'}</span></td>
+            <td><div className="order-status-cell"><span data-testid={`orders-status-${row.sale.invoice}`} className={`order-status-badge ${row.sale.orderStatus === 'waiting' ? 'is-waiting' : 'is-ready'}`}>{row.sale.orderStatus === 'waiting' ? 'Dalam pembuatan' : row.sale.orderStatus === 'ready' ? 'Siap diambil' : row.sale.status || 'Selesai'}</span>{row.sale.orderStatus === 'waiting' && <button type="button" className="order-ready-button" data-testid={`orders-ready-${row.sale.invoice}`} aria-label={`Tandai pesanan ${row.sale.invoice} siap diambil`} onClick={() => markOrderReady(row.sale.invoice)}><Check size={13}/>Tandai siap</button>}</div></td>
           </tr>)}</tbody>
         </table></div>
         <div className="table-bottom">Menampilkan {visible.length} pesanan kategori Tosco <span>Item non-kopi tetap ditampilkan sebagai bagian transaksi</span></div>

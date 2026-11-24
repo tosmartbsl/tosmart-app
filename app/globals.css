@@ -450,6 +450,17 @@ button { color:inherit; }
   .receipt-actions { gap:6px; padding-right:17px; padding-left:17px; }
   .receipt-actions>button { min-width:calc(50% - 6px); padding:0 8px; font-size:8px; }
 }
+.pos-product-art .stock-status { display:inline-flex; align-items:center; min-height:23px; padding:0 8px; border:1px solid transparent; border-radius:999px; font-size:8px; font-style:normal; font-weight:800; line-height:1; white-space:nowrap; }
+.pos-product-art .stock-status-out { border-color:#FECACA; background:#FEE2E2; color:#B91C1C; }
+.pos-product-art .stock-status-low { border-color:#FED7AA; background:#FFEDD5; color:#C2410C; }
+.pos-product-art .stock-status-available { border-color:#BBF7D0; background:#DCFCE7; color:#15803D; }
+.order-status-cell { display:flex; flex-direction:column; align-items:flex-start; gap:7px; white-space:nowrap; }
+.order-status-badge { display:inline-flex; min-height:24px; align-items:center; padding:0 9px; border:1px solid transparent; border-radius:999px; font-size:8px; font-weight:750; }
+.order-status-badge.is-waiting { border-color:#FED7AA; background:#FFEDD5; color:#C2410C; }
+.order-status-badge.is-ready { border-color:#BBF7D0; background:#DCFCE7; color:#15803D; }
+.order-ready-button { display:inline-flex; min-height:29px; align-items:center; justify-content:center; gap:5px; padding:0 9px; border:1px solid #86EFAC; border-radius:6px; background:#F0FDF4; color:#15803D; font-size:8px; font-weight:700; cursor:pointer; transition:background .15s,border-color .15s; }
+.order-ready-button:hover { border-color:#4ADE80; background:#DCFCE7; }
+.order-ready-button:focus-visible { outline:3px solid #22C55E55; outline-offset:2px; }
 @media print {
   @page { margin:0; }
   html, body { width:100%; min-width:0; margin:0!important; padding:0!important; background:#fff!important; }
