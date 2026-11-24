@@ -1,9 +1,10 @@
 'use client'
 
 import { FormEvent, useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { ArrowLeft, ArrowRight, Eye, EyeOff, LockKeyhole, Mail, ShieldCheck, Sparkles, Store, UserRound } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Eye, EyeOff, LockKeyhole, Mail, ShieldCheck, Sparkles, UserRound } from 'lucide-react'
 import ProductShowcase from '@/components/landing/product-showcase'
 
 type AuthMode = 'login' | 'register' | 'forgot' | 'reset'
@@ -21,8 +22,7 @@ const copy: Record<AuthMode, { eyebrow: string; title: string; description: stri
 function AuthBrand() {
   return (
     <Link href="/" className="brand" aria-label="Tosmart beranda">
-      <span className="brand-mark" aria-hidden="true"><Store size={18} strokeWidth={1.8} /></span>
-      <span className="brand-wordmark">tosmart<span>.</span></span>
+      <Image src="/tosmart-full.png" alt="Tosmart" width={154} height={58} className="brand-logo" priority />
     </Link>
   )
 }

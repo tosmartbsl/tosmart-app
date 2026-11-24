@@ -1,37 +1,14 @@
 'use client'
 
+import Image from 'next/image'
 import { useState } from 'react'
-import { ArrowUpRight, Check, Coffee, Croissant, Package, ShoppingBag, Store, Wheat } from 'lucide-react'
+import { Coffee, Croissant, Package, ShoppingBag, Store, Wheat } from 'lucide-react'
 
 const products = [
-  {
-    id: 'groceries',
-    label: 'Sembako',
-    note: 'Kebutuhan pokok',
-    detail: 'Beras, minyak, telur, dan kebutuhan harian lainnya.',
-    Icon: Wheat,
-  },
-  {
-    id: 'bakery',
-    label: 'Roti',
-    note: 'Roti & camilan',
-    detail: 'Aneka roti dan camilan untuk teman setiap hari.',
-    Icon: Croissant,
-  },
-  {
-    id: 'coffee',
-    label: 'Kopi',
-    note: 'Kopi & minuman',
-    detail: 'Kopi, minuman dingin, dan teman santai lainnya.',
-    Icon: Coffee,
-  },
-  {
-    id: 'essentials',
-    label: 'Lainnya',
-    note: 'Produk harian',
-    detail: 'Beragam produk rumah tangga dari toko sekitar.',
-    Icon: Package,
-  },
+  { id: 'groceries', label: 'Sembako', note: 'Kebutuhan pokok', detail: 'Beras, minyak, telur, dan kebutuhan harian lainnya.', Icon: Wheat },
+  { id: 'bakery', label: 'Roti', note: 'Roti & camilan', detail: 'Aneka roti dan camilan untuk teman setiap hari.', Icon: Croissant },
+  { id: 'coffee', label: 'Kopi', note: 'Kopi & minuman', detail: 'Kopi, minuman dingin, dan teman santai lainnya.', Icon: Coffee },
+  { id: 'essentials', label: 'Lainnya', note: 'Produk harian', detail: 'Beragam produk rumah tangga dari toko sekitar.', Icon: Package },
 ]
 
 type ProductShowcaseProps = {
@@ -44,52 +21,43 @@ export default function ProductShowcase({ variant = 'landing' }: ProductShowcase
   const ActiveIcon = activeProduct.Icon
 
   return (
-    <section className={`product-showcase product-showcase-${variant}`} aria-label="Jelajahi kategori produk toko">
+    <section className={`product-showcase product-showcase-${variant}`} aria-label="Etalase kebutuhan toko harian">
       <div className="product-showcase-heading">
         <div>
-          <span className="product-showcase-eyebrow">ETALASE TOKO HARIAN</span>
-          <h2>Pilih yang kamu cari</h2>
+          <span className="product-showcase-eyebrow">CERITA TOKO HARIAN</span>
+          <h2>Semua kebutuhan, satu toko.</h2>
         </div>
-        <span className="product-showcase-hint">Pilih kategori di bawah</span>
+        <span className="product-showcase-hint">Belanja lokal, lebih mudah</span>
       </div>
 
-      <div className="showcase-stage" aria-label="Ilustrasi dashboard toko Tosmart">
-        <span className="showcase-orbit showcase-orbit-one" aria-hidden="true" />
-        <span className="showcase-orbit showcase-orbit-two" aria-hidden="true" />
-        <div className="showcase-topline">
-          <span className="showcase-store-icon"><Store size={16} /></span>
-          <span><strong>Toko Utama</strong><small>Ringkasan hari ini</small></span>
-          <span className="showcase-live"><i /> AKTIF</span>
-        </div>
-        <div className="showcase-receipt">
-          <div className="showcase-receipt-heading"><span>RINGKASAN PENJUALAN</span><small>HARI INI</small></div>
-          <div className="showcase-receipt-total"><strong>Rp 4.870.000</strong><span><ArrowUpRight size={13} /> 12,8%</span></div>
-          <div className="showcase-chart" aria-hidden="true">
-            {[34, 52, 41, 70, 55, 85, 63, 92].map((height, index) => <i key={index} style={{ height: `${height}%` }} />)}
-          </div>
-          <span className="showcase-receipt-note"><Check size={12} /> 248 transaksi tercatat</span>
-        </div>
-        <div className="showcase-float showcase-float-category">
-          <span className="showcase-float-icon"><ActiveIcon size={16} /></span>
-          <span><small>KATEGORI PILIHAN</small><strong>{activeProduct.label}</strong></span>
-        </div>
-        <div className="showcase-float showcase-float-stock">
-          <span className="showcase-float-icon"><Package size={16} /></span>
-          <span><small>STOK TERSEDIA</small><strong>124 produk</strong></span>
-          <span className="showcase-stock-dot" />
-        </div>
-        <div key={activeProduct.id} className="product-detail-card" aria-live="polite">
-          <span className="product-detail-icon"><ActiveIcon size={18} strokeWidth={1.8} /></span>
-          <span className="product-detail-copy">
-            <small>KATEGORI PILIHAN</small>
-            <strong>{activeProduct.label}</strong>
-            <span>{activeProduct.detail}</span>
-          </span>
-          <span className="product-detail-index">0{products.findIndex((product) => product.id === activeProduct.id) + 1}</span>
+      <div className="showcase-photo">
+        <Image
+          src="/cashier-experience.png"
+          alt="Aneka bahan pokok, roti, minuman, dan kebutuhan rumah untuk toko harian"
+          fill
+          loading="eager"
+          sizes={variant === 'landing' ? '(max-width: 760px) 100vw, 55vw' : '(max-width: 760px) 100vw, 42vw'}
+          className="showcase-product-image"
+        />
+        <span className="showcase-photo-shade" aria-hidden="true" />
+        <span className="showcase-photo-stamp"><ShoppingBag size={14} /> Pilihan toko harian</span>
+        <div className="showcase-photo-caption">
+          <span className="showcase-caption-icon"><Store size={17} /></span>
+          <span><small>RAPI, SIAP MELAYANI</small><strong>Temukan kebutuhan tokomu.</strong></span>
         </div>
       </div>
 
-      <div className="product-category-grid" role="group" aria-label="Kategori produk">
+      <div className="product-detail-card" aria-live="polite">
+        <span className="product-detail-icon"><ActiveIcon size={18} strokeWidth={1.8} /></span>
+        <span className="product-detail-copy">
+          <small>KATEGORI PILIHAN</small>
+          <strong>{activeProduct.label}</strong>
+          <span>{activeProduct.detail}</span>
+        </span>
+        <span className="product-detail-index">0{products.findIndex((product) => product.id === activeProduct.id) + 1}</span>
+      </div>
+
+      <div className="product-category-grid" role="group" aria-label="Pilih kategori produk">
         {products.map(({ id, label, note, Icon }) => (
           <button
             key={id}
