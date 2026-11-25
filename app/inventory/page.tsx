@@ -1,3 +1,3 @@
-import PhaseThreeWorkspace from '@/components/dashboard/phase-three-workspace'
+import PhaseTwoWorkspace from '@/components/dashboard/phase-two-workspace'
 
-export default function InventoryPage() { return <PhaseThreeWorkspace /> }
+export default function InventoryPage() { return <PhaseTwoWorkspace /> }
