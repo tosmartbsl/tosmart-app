@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import ProductShowcase from '@/components/landing/product-showcase'
+import InteractiveBrand from '@/components/landing/interactive-brand'
 
 function Brand() {
   return (
@@ -18,9 +18,8 @@ export default function LandingPage() {
         <div className="site-header-inner">
           <Brand />
           <div className="header-actions">
-            <Link className="login-link" href="/login">Masuk</Link>
-            <Link className="button button-green header-cta" href="/register">
-              Mulai sekarang <ArrowRight size={16} />
+            <Link className="button button-green header-cta" href="/login">
+              Masuk <ArrowRight size={16} />
             </Link>
           </div>
         </div>
@@ -28,20 +27,20 @@ export default function LandingPage() {
       <section className="hero-section" aria-labelledby="landing-title">
         <div className="hero-inner">
           <div className="hero-copy">
-            <span className="section-kicker">TEMAN TOKO HARIANMU</span>
-            <h1 id="landing-title">Semua urusan toko,<br /><span>jadi lebih tertata.</span></h1>
+            <span className="section-kicker">SELAMAT DATANG DI TOSMART APP</span>
+            <h1 id="landing-title">Belanja tanpa drama,<br /><span>transaksi tanpa ribet.</span></h1>
             <p className="hero-description">
-              Dari transaksi kasir sampai kelola produk, Tosmart bantu operasional toko harian terasa lebih sederhana.
+              Karena waktu lebih baik dihabiskan untuk melayani pelanggan, bukan untuk mengurus transaksi yang rumit.
             </p>
             <div className="hero-buttons">
-              <Link href="/register" className="button button-green button-large">
-                Mulai gratis <ArrowRight size={17} />
+              <Link href="/login" className="button button-green button-large">
+                Masuk ke akun <ArrowRight size={17} />
               </Link>
-              <Link href="/login" className="button button-outline button-large">Masuk ke akun</Link>
+              <Link href="#brand-feature" className="button button-outline button-large">Kenali Tosmart</Link>
             </div>
           </div>
           <div className="hero-visual">
-            <ProductShowcase />
+            <InteractiveBrand variant="landing" />
           </div>
         </div>
       </section>
