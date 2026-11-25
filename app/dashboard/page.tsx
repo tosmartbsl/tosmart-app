@@ -1,2 +1,5 @@
-import { ProtectedDashboard } from '@/components/dashboard/dashboard-shell'
-export default function DashboardPage(){return <ProtectedDashboard/>}
+import DashboardPage from '@/components/dashboard/dashboard-page'
+
+export default function Dashboard() {
+  return <DashboardPage />
+}
