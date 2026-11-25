@@ -8,7 +8,7 @@ import InteractiveBrand from '@/components/landing/interactive-brand'
 
 type AuthMode = 'login' | 'forgot' | 'reset'
 const DEMO_ACCOUNTS = [
-  { email: 'admin@retailpos.com', password: 'admin123', name: 'Andi Saputra', role: 'Administrator' },
+  { email: 'admin@retailpos.com', password: 'admin123', name: 'Andi Saputra', role: 'Super Admin' },
   { email: 'cashier@retailpos.com', password: 'cashier123', name: 'Rina Putri', role: 'Kasir' },
 ]
 const copy: Record<AuthMode, { eyebrow: string; title: string; description: string; button: string }> = {
@@ -59,7 +59,7 @@ export default function AuthPage({ mode }: { mode: AuthMode }) {
       {error && <p className="auth-error" role="alert">{error}</p>}{notice && <p className="auth-notice" role="status">{notice}</p>}
       <button className="button button-green auth-submit" type="submit" disabled={loading}>{loading?'Memeriksa akun…':info.button}<ArrowRight size={16}/></button>
     </form>
-    {mode === 'login' && <div className="demo-box"><div className="demo-box-title"><span><Sparkles size={14}/> AKUN DEMO SIAP PAKAI</span><span className="demo-badge">Frontend demo</span></div><button type="button" className="demo-account" onClick={()=>{setEmail('admin@retailpos.com');setPassword('admin123')}}><span className="demo-role"><b>Admin</b><small>Kelola dashboard</small></span><span>admin@retailpos.com <b>·</b> admin123</span></button><button type="button" className="demo-account" onClick={()=>{setEmail('cashier@retailpos.com');setPassword('cashier123')}}><span className="demo-role"><b>Kasir</b><small>Akses kasir</small></span><span>cashier@retailpos.com <b>·</b> cashier123</span></button><p>Mode simulasi untuk fase frontend — belum terhubung ke layanan autentikasi produksi.</p></div>}
+    {mode === 'login' && <div className="demo-box"><div className="demo-box-title"><span><Sparkles size={14}/> AKUN DEMO SIAP PAKAI</span><span className="demo-badge">Frontend demo</span></div><button type="button" className="demo-account" onClick={()=>{setEmail('admin@retailpos.com');setPassword('admin123')}}><span className="demo-role"><b>Super Admin</b><small>Kelola semua modul</small></span><span>admin@retailpos.com <b>·</b> admin123</span></button><button type="button" className="demo-account" onClick={()=>{setEmail('cashier@retailpos.com');setPassword('cashier123')}}><span className="demo-role"><b>Kasir</b><small>Akses kasir</small></span><span>cashier@retailpos.com <b>·</b> cashier123</span></button><p>Mode simulasi untuk fase frontend — belum terhubung ke layanan autentikasi produksi.</p></div>}
       {mode === 'login' && <p className="auth-switch">Akun Tosmart dibuat dan diberikan oleh administrator toko.</p>}
     {mode==='forgot' && <Link href="/login" className="auth-secondary-link">Kembali ke halaman masuk</Link>}{mode==='reset' && <Link href="/login" className="auth-secondary-link">Kembali ke halaman masuk</Link>}
     <p className="auth-legal">Dengan melanjutkan, kamu menyetujui <a href="#ketentuan">Ketentuan Layanan</a> dan <a href="#privasi">Kebijakan Privasi</a> Tosmart.</p>
