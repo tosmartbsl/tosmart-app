@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Poppins } from 'next/font/google'
 import './globals.css'
+import './landing.css'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -11,8 +12,8 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'Tosmart App | Belanja tanpa drama, transaksi tanpa ribet',
-  description: 'Tosmart membantu operasional toko agar waktumu lebih banyak untuk melayani pelanggan, bukan mengurus transaksi yang rumit.',
+  title: 'Tosmart | Operasional Toko Lebih Teratur',
+  description: 'Kelola kasir, produk, stok, pembelian, dan laporan toko dalam satu aplikasi yang praktis bersama Tosmart.',
   generator: 'v0.app',
   icons: {
     icon: '/tosmart-full.png',

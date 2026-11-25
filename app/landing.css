@@ -1,0 +1,251 @@
+/* Landing page */
+.tara-landing {
+  --tara-ink: #34251b;
+  --tara-muted: #786a5d;
+  --tara-paper: #fcf8f3;
+  --tara-line: #e9ded2;
+  --tara-brown: #674425;
+  --tara-caramel: #a7754d;
+  overflow: hidden;
+  background: #fff;
+  color: var(--tara-ink);
+}
+.tara-landing a { color: inherit; text-decoration: none; }
+.tara-header { position: sticky; z-index: 20; top: 0; height: 76px; border-bottom: 1px solid #eadfd4; background: #fcf8f3ed; backdrop-filter: blur(16px); }
+.tara-header-inner { display: flex; align-items: center; justify-content: space-between; width: min(100% - 72px, 1320px); height: 100%; margin: 0 auto; }
+.tara-brand { display: inline-flex; align-items: center; flex: none; }
+.tara-brand img { display: block; width: 142px; height: auto; }
+.tara-nav { display: flex; align-items: center; gap: 38px; margin-left: auto; margin-right: 48px; }
+.tara-nav a { color: #796c61; font-size: 12px; font-weight: 550; transition: color .2s; }
+.tara-nav a:hover, .tara-footer-links a:hover { color: #995f35; }
+.tara-header-cta { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 41px; padding: 0 17px; border: 1px solid #684626; border-radius: 7px; background: #684626; color: #fff !important; font-size: 11px; font-weight: 650; transition: background .2s, transform .2s; }
+.tara-header-cta:hover, .tara-button-primary:hover { transform: translateY(-1px); background: #4f341e; }
+.tara-hero { position: relative; padding: 72px 36px 0; background: radial-gradient(ellipse at 82% 38%, #f1dfca 0, transparent 39%), linear-gradient(180deg, #fcf8f3 0%, #fbf5ed 100%); }
+.tara-hero-inner { display: grid; grid-template-columns: .84fr 1.16fr; align-items: center; gap: clamp(36px, 5.5vw, 82px); width: min(100%, 1240px); min-height: 550px; margin: 0 auto; }
+.tara-hero-copy { position: relative; z-index: 2; padding: 0 0 32px; }
+.tara-eyebrow { display: inline-flex; align-items: center; gap: 9px; color: #896443; font-size: 9px; font-weight: 750; letter-spacing: 1.35px; }
+.tara-eyebrow > i { width: 7px; height: 7px; border-radius: 50%; background: #a9784d; box-shadow: 0 0 0 4px #a9784d1a; }
+.tara-hero h1 { max-width: 620px; margin: 23px 0 18px; color: #332318; font-size: clamp(44px, 4vw, 52px); font-weight: 600; line-height: 1.04; letter-spacing: -3px; }
+.tara-hero h1 span { color: #a17148; }
+.tara-hero-copy > p { max-width: 435px; margin: 0; color: #796b5f; font-size: 14px; line-height: 1.85; }
+.tara-hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 27px; }
+.tara-button { display: inline-flex; align-items: center; justify-content: center; gap: 11px; min-height: 48px; padding: 0 18px; border: 1px solid transparent; border-radius: 7px; font-size: 11px; font-weight: 650; transition: color .2s, background .2s, border-color .2s, transform .2s; }
+.tara-button-primary { background: #684626; color: #fff !important; box-shadow: 0 7px 18px #56391e24; }
+.tara-button-quiet { color: #5c4734 !important; }
+.tara-button-quiet:hover { color: #a17148 !important; }
+.tara-hero-footnote { display: flex; align-items: center; gap: 12px; margin-top: 30px; color: #958577; font-size: 10px; }
+.tara-footnote-mark { display: flex; align-items: center; padding-left: 3px; }
+.tara-footnote-mark span { width: 21px; height: 21px; margin-left: -3px; border: 2px solid #fcf8f3; border-radius: 50%; background: #cda987; }
+.tara-footnote-mark span:nth-child(2) { background: #9e7658; }
+.tara-footnote-mark span:nth-child(3) { background: #e1c8ae; }
+.tara-hero-bottom { display: flex; justify-content: center; gap: clamp(22px, 5vw, 70px); width: min(100%, 1240px); padding: 19px 0 20px; margin: 34px auto 0; border-top: 1px solid #e9ded2; }
+.tara-hero-bottom span { display: inline-flex; align-items: center; gap: 9px; color: #8c7c6e; font-size: 8px; font-weight: 750; letter-spacing: 1.2px; }
+.tara-hero-bottom i { width: 5px; height: 5px; border-radius: 50%; background: #a9784d; }
+.tara-preview-wrap { position: relative; width: min(100%, 690px); margin: 0 auto; padding: 0 0 27px; }
+.tara-preview-orbit { position: absolute; z-index: 0; border: 1px solid #e6d5c2; border-radius: 50%; pointer-events: none; }
+.tara-preview-orbit-one { top: 1%; right: -3%; width: 83%; aspect-ratio: 1; }
+.tara-preview-orbit-two { top: 8%; right: 3%; width: 70%; aspect-ratio: 1; border-style: dashed; opacity: .62; }
+.tara-dashboard { position: relative; z-index: 1; display: grid; grid-template-columns: 145px minmax(0, 1fr); overflow: hidden; min-height: 442px; border: 1px solid #e7dfd7; border-radius: 12px; background: #fff; box-shadow: 0 27px 75px #4c34211c, 0 3px 10px #4c34210a; }
+.tara-dashboard-sidebar { display: flex; flex-direction: column; gap: 6px; padding: 18px 12px 14px; border-right: 1px solid #f0ece8; background: #fffdfa; }
+.tara-dashboard-brand { display: flex; align-items: center; gap: 8px; margin-bottom: 27px; color: #49392b; font-size: 12px; font-weight: 750; }
+.tara-dashboard-mark { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 7px; background: #684626; color: #fff; }
+.tara-dashboard-label { margin: 0 0 3px 7px; color: #a69a8f; font-size: 7px; font-weight: 750; letter-spacing: 1px; }
+.tara-dashboard-nav { display: flex; align-items: center; gap: 8px; min-height: 32px; padding: 0 8px; border-radius: 5px; color: #90857a; font-size: 8px; }
+.tara-dashboard-nav.is-current { background: #f1e9e0; color: #69482c; font-weight: 700; }
+.tara-sidebar-store { display: flex; align-items: center; gap: 8px; padding: 11px 2px 0; margin-top: auto; border-top: 1px solid #eee8e2; }
+.tara-store-monogram { display: grid; flex: none; place-items: center; width: 27px; height: 27px; border: 1px solid #e6d5c3; border-radius: 50%; background: #f7eee4; color: #765338; font-size: 10px; font-weight: 700; }
+.tara-sidebar-store > span:last-child { display: grid; gap: 3px; min-width: 0; }
+.tara-sidebar-store b { overflow: hidden; color: #5c4a3c; font-size: 8px; text-overflow: ellipsis; white-space: nowrap; }
+.tara-sidebar-store small { color: #a09489; font-size: 7px; }
+.tara-dashboard-content { min-width: 0; padding: 17px 18px 15px; }
+.tara-dashboard-topbar { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: #a19487; font-size: 7px; font-weight: 750; letter-spacing: .9px; }
+.tara-dashboard-date { display: inline-flex; align-items: center; gap: 5px; padding: 6px 7px; border: 1px solid #eee8e2; border-radius: 5px; color: #847669; font-size: 7px; font-weight: 500; letter-spacing: 0; }
+.tara-dashboard-heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 18px; }
+.tara-dashboard-heading h2 { margin: 0; color: #3e3024; font-size: 17px; font-weight: 650; letter-spacing: -.55px; }
+.tara-dashboard-heading p { margin: 5px 0 0; color: #988b7e; font-size: 8px; }
+.tara-avatar { display: grid; place-items: center; width: 27px; height: 27px; border-radius: 50%; background: #efe3d5; color: #765338; font-size: 9px; font-weight: 700; }
+.tara-stat-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; margin-top: 16px; }
+.tara-stat-card { display: grid; gap: 7px; min-width: 0; padding: 10px 9px; border: 1px solid #eee9e4; border-radius: 6px; }
+.tara-stat-card > span { overflow: hidden; color: #908579; font-size: 7px; text-overflow: ellipsis; white-space: nowrap; }
+.tara-stat-card > b { overflow: hidden; color: #48382a; font-size: clamp(10px, 1vw, 13px); letter-spacing: -.3px; text-overflow: ellipsis; white-space: nowrap; }
+.tara-stat-card > small { display: flex; align-items: center; gap: 3px; color: #a49a90; font-size: 6px; }
+.tara-stat-card .tara-stat-positive { color: #7e8d69; }
+.tara-stat-card .tara-stat-alert { color: #ad7950; }
+.tara-chart-card { padding: 12px 11px 9px; margin-top: 10px; border: 1px solid #eee9e4; border-radius: 6px; }
+.tara-chart-heading { display: flex; align-items: center; justify-content: space-between; gap: 9px; }
+.tara-chart-heading > span:first-child { display: grid; gap: 4px; }
+.tara-chart-heading b { color: #554638; font-size: 8px; }
+.tara-chart-heading small { color: #a49a90; font-size: 6px; }
+.tara-chart-legend { display: inline-flex; align-items: center; gap: 5px; color: #918578; font-size: 6px; }
+.tara-chart-legend i { width: 6px; height: 6px; border-radius: 2px; background: #a9784d; }
+.tara-chart-area { position: relative; height: 104px; margin-top: 12px; }
+.tara-chart-guides { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; }
+.tara-chart-guides i { border-top: 1px dashed #eee9e4; }
+.tara-chart-bars { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: space-around; gap: 5px; padding: 0 3px; }
+.tara-chart-bars i { width: 5.4%; min-height: 8%; border-radius: 3px 3px 0 0; background: linear-gradient(180deg, #c7a483, #eee4d9); }
+.tara-chart-bars i:nth-child(3n + 1) { background: linear-gradient(180deg, #936a49, #d9c5b0); }
+.tara-chart-days { display: flex; justify-content: space-between; padding-top: 6px; color: #a69b90; font-size: 6px; }
+.tara-stock-row { display: flex; align-items: center; gap: 8px; padding: 9px 10px; margin-top: 9px; border: 1px solid #eee9e4; border-radius: 6px; }
+.tara-stock-icon { display: grid; flex: none; place-items: center; width: 26px; height: 26px; border-radius: 6px; background: #f4eee7; color: #896444; }
+.tara-stock-copy { display: grid; flex: 1; gap: 3px; min-width: 0; }
+.tara-stock-copy b { color: #665343; font-size: 7px; }
+.tara-stock-copy small { color: #9d9185; font-size: 6px; }
+.tara-stock-status { display: inline-flex; align-items: center; gap: 4px; color: #788467; font-size: 6px; }
+.tara-preview-caption { display: block; padding-top: 10px; color: #a29689; font-size: 6px; font-weight: 700; letter-spacing: 1px; text-align: right; }
+.tara-floating-note { position: absolute; z-index: 2; right: -16px; bottom: 3px; display: flex; align-items: center; gap: 10px; padding: 11px 14px; border: 1px solid #eee4d9; border-radius: 8px; background: #fff; box-shadow: 0 12px 35px #4c342114; }
+.tara-floating-icon { display: grid; place-items: center; width: 31px; height: 31px; border-radius: 8px; background: #f6efe7; color: #855d3e; }
+.tara-floating-note > span:last-child { display: grid; gap: 4px; }
+.tara-floating-note small { color: #9a8b7c; font-size: 6px; font-weight: 750; letter-spacing: .8px; }
+.tara-floating-note b { color: #594535; font-size: 8px; }
+.tara-features-section { padding: 105px 36px 112px; background: #fff; }
+.tara-section-heading { max-width: 670px; margin: 0 auto 43px; text-align: center; }
+.tara-section-heading .tara-eyebrow, .tara-workflow-intro .tara-eyebrow { justify-content: center; }
+.tara-section-heading h2, .tara-story-copy h2, .tara-workflow-intro h2 { margin: 16px 0 12px; color: #34251b; font-size: clamp(32px, 4vw, 47px); font-weight: 550; line-height: 1.12; letter-spacing: -2.1px; }
+.tara-section-heading p, .tara-story-copy > p, .tara-workflow-intro > p { margin: 0; color: #817367; font-size: 13px; line-height: 1.8; }
+.tara-feature-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 13px; width: min(100%, 1200px); margin: 0 auto; }
+.tara-feature-card { position: relative; display: flex; flex-direction: column; min-height: 213px; padding: 19px 18px 17px; border: 1px solid #eee7e0; border-radius: 8px; background: #fff; transition: transform .2s, border-color .2s, box-shadow .2s; }
+.tara-feature-card:hover { transform: translateY(-3px); border-color: #d9c5b0; box-shadow: 0 14px 35px #4c34210b; }
+.tara-feature-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.tara-feature-icon { display: grid; place-items: center; width: 37px; height: 37px; border-radius: 8px; background: #f6efe8; color: #865d3d; }
+.tara-feature-top > span:last-child { color: #a19487; font-size: 7px; font-weight: 750; letter-spacing: .75px; }
+.tara-feature-card h3 { margin: 24px 0 8px; color: #433326; font-size: 14px; letter-spacing: -.2px; }
+.tara-feature-card p { max-width: 240px; margin: 0; color: #83766a; font-size: 10px; line-height: 1.75; }
+.tara-feature-arrow { display: grid; place-items: center; width: 26px; height: 26px; margin: auto 0 0 auto; color: #a17a57; }
+.tara-story-section { display: grid; grid-template-columns: 1.04fr .96fr; align-items: center; gap: clamp(45px, 8vw, 110px); padding: 94px max(36px, calc((100vw - 1200px) / 2)); background: #faf6f1; }
+.tara-story-visual { position: relative; min-height: 410px; overflow: hidden; border-radius: 9px; background: #e6d5c2; box-shadow: 0 25px 60px #4c342114; }
+.tara-story-image { object-fit: cover; object-position: center; }
+.tara-story-image-shade { position: absolute; inset: 42% 0 0; background: linear-gradient(180deg, transparent, #2e1d1278); }
+.tara-story-image-label { position: absolute; top: 17px; left: 17px; display: flex; align-items: center; gap: 9px; padding: 8px 11px; border: 1px solid #ffffff6b; border-radius: 5px; background: #fffdf8e8; color: #76553a; }
+.tara-story-image-label > span { display: grid; place-items: center; width: 25px; height: 25px; border-radius: 5px; background: #f3e9de; }
+.tara-story-image-label small { font-size: 7px; font-weight: 750; letter-spacing: .8px; }
+.tara-story-note { position: absolute; right: 18px; bottom: 18px; left: 18px; display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: 1px solid #ffffff4a; border-radius: 6px; background: #fffdf8ed; color: #805b3c; }
+.tara-story-note > span { display: grid; gap: 4px; }
+.tara-story-note b { color: #49382a; font-size: 9px; }
+.tara-story-note small { color: #8e7f71; font-size: 7px; }
+.tara-story-copy { max-width: 460px; }
+.tara-story-copy h2 { font-size: clamp(32px, 4vw, 46px); }
+.tara-story-copy > p { max-width: 420px; font-size: 12px; }
+.tara-story-copy ul { display: grid; gap: 14px; padding: 0; margin: 26px 0 0; list-style: none; }
+.tara-story-copy li { display: flex; align-items: center; gap: 10px; color: #615348; font-size: 10px; }
+.tara-story-copy li > span { display: grid; place-items: center; width: 25px; height: 25px; border-radius: 50%; background: #efe5da; color: #805c3f; }
+.tara-text-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 27px; color: #785536 !important; font-size: 10px; font-weight: 700; }
+.tara-text-link:hover { color: #a17148 !important; }
+.tara-workflow-section { padding: 101px 36px 108px; background: #fff; }
+.tara-workflow-intro { max-width: 650px; margin: 0 auto 41px; text-align: center; }
+.tara-workflow-intro h2 { margin-top: 16px; }
+.tara-workflow-intro > p { max-width: 530px; margin: 0 auto; }
+.tara-steps-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 17px; width: min(100%, 1150px); margin: 0 auto; }
+.tara-step-card { display: grid; grid-template-columns: 34px 1fr; column-gap: 12px; align-content: start; min-height: 163px; padding: 20px 20px 18px; border: 1px solid #eee7e0; border-radius: 8px; background: #fff; }
+.tara-step-number { color: #a37c59; font-size: 10px; font-weight: 750; letter-spacing: .5px; }
+.tara-step-rule { width: 100%; height: 1px; margin-top: 6px; background: #eadfd3; }
+.tara-step-card h3 { grid-column: 1 / -1; margin: 22px 0 8px; color: #463529; font-size: 14px; }
+.tara-step-card p { grid-column: 1 / -1; max-width: 290px; margin: 0; color: #827569; font-size: 10px; line-height: 1.75; }
+.tara-closing-section { position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; min-height: 326px; padding: 62px 30px; background: #4c3525; color: #fff; text-align: center; }
+.tara-closing-orb { position: absolute; top: -245px; left: calc(50% - 240px); width: 480px; height: 440px; border: 1px solid #ffffff14; border-radius: 50%; box-shadow: 0 0 0 45px #ffffff08, 0 0 0 90px #ffffff05; }
+.tara-closing-content { position: relative; z-index: 1; max-width: 670px; }
+.tara-closing-content .tara-eyebrow { color: #dec9b3; }
+.tara-closing-content h2 { margin: 15px 0 10px; color: #fff9f2; font-size: clamp(31px, 4vw, 46px); font-weight: 550; line-height: 1.12; letter-spacing: -2px; }
+.tara-closing-content p { margin: 0; color: #d6c5b5; font-size: 11px; line-height: 1.7; }
+.tara-button-light { min-height: 43px; margin-top: 23px; background: #f7eee4; color: #4e3525 !important; }
+.tara-button-light:hover { transform: translateY(-1px); background: #fff; }
+.tara-closing-seal { position: absolute; right: max(7vw, 32px); bottom: 30px; display: grid; place-items: center; width: 43px; height: 43px; border: 1px solid #ffffff32; border-radius: 50%; color: #e3cdb6; }
+.tara-footer { display: flex; align-items: center; gap: 22px; min-height: 91px; padding: 18px max(36px, calc((100vw - 1240px) / 2)); background: #fcf8f3; }
+.tara-footer-brand { display: inline-flex; flex: none; }
+.tara-footer-brand img { display: block; width: 119px; height: auto; }
+.tara-footer > p { margin: 0; color: #918274; font-size: 9px; }
+.tara-footer-links { display: flex; gap: 22px; margin-left: auto; }
+.tara-footer-links a, .tara-footer-copyright { color: #827468; font-size: 9px; }
+.tara-footer-copyright { margin-left: 15px; color: #a09487; }
+@media (max-width: 1050px) {
+  .tara-header-inner { width: calc(100% - 48px); }
+  .tara-hero { padding: 55px 24px 0; }
+  .tara-hero-inner { grid-template-columns: .83fr 1.17fr; gap: 28px; min-height: 490px; }
+  .tara-hero h1 { font-size: clamp(40px, 4.5vw, 48px); letter-spacing: -3px; }
+  .tara-dashboard { grid-template-columns: 115px minmax(0, 1fr); min-height: 410px; }
+  .tara-dashboard-sidebar { padding-right: 9px; padding-left: 9px; }
+  .tara-dashboard-content { padding-right: 13px; padding-left: 13px; }
+  .tara-story-section { gap: 48px; padding-right: 42px; padding-left: 42px; }
+  .tara-story-visual { min-height: 355px; }
+}
+@media (max-width: 760px) {
+  .tara-header { height: 66px; }
+  .tara-header-inner { width: calc(100% - 36px); }
+  .tara-brand img { width: 124px; }
+  .tara-nav { display: none; }
+  .tara-header-cta { min-height: 37px; padding: 0 12px; font-size: 10px; }
+  .tara-hero { padding: 42px 20px 0; background: radial-gradient(ellipse at 76% 62%, #f0dfcc 0, transparent 45%), linear-gradient(180deg, #fcf8f3 0%, #fbf5ed 100%); }
+  .tara-hero-inner { grid-template-columns: 1fr; gap: 15px; min-height: 0; }
+  .tara-hero-copy { padding: 0; }
+  .tara-hero h1 { margin: 18px 0 13px; font-size: clamp(43px, 10vw, 62px); letter-spacing: -3px; }
+  .tara-hero-copy > p { max-width: 500px; font-size: 12px; }
+  .tara-hero-actions { gap: 5px; margin-top: 19px; }
+  .tara-button { min-height: 43px; padding: 0 14px; font-size: 10px; }
+  .tara-hero-footnote { margin-top: 20px; font-size: 9px; }
+  .tara-hero-visual { padding: 12px 5px 21px; }
+  .tara-preview-wrap { max-width: 540px; padding-bottom: 0; }
+  .tara-floating-note { display: none; }
+  .tara-dashboard { grid-template-columns: 112px minmax(0, 1fr); min-height: 0; }
+  .tara-dashboard-sidebar { padding-top: 14px; }
+  .tara-dashboard-brand { margin-bottom: 19px; }
+  .tara-dashboard-content { padding: 13px 12px 11px; }
+  .tara-dashboard-heading { margin-top: 13px; }
+  .tara-dashboard-heading h2 { font-size: 14px; }
+  .tara-stat-grid { margin-top: 12px; }
+  .tara-stat-card { gap: 5px; padding: 8px 6px; }
+  .tara-stat-card > b { font-size: 10px; }
+  .tara-chart-area { height: 85px; }
+  .tara-floating-note { right: -1px; bottom: 0; padding: 8px 10px; }
+  .tara-floating-icon { width: 26px; height: 26px; }
+  .tara-hero-bottom { flex-wrap: wrap; justify-content: flex-start; gap: 12px 21px; padding: 15px 0 17px; margin-top: 16px; }
+  .tara-hero-bottom span { font-size: 7px; }
+  .tara-features-section, .tara-workflow-section { padding: 72px 20px; }
+  .tara-section-heading { margin-bottom: 28px; }
+  .tara-section-heading h2, .tara-story-copy h2, .tara-workflow-intro h2 { font-size: clamp(30px, 7vw, 41px); letter-spacing: -1.7px; }
+  .tara-section-heading p, .tara-story-copy > p, .tara-workflow-intro > p { font-size: 11px; }
+  .tara-feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .tara-feature-card { min-height: 194px; padding: 14px 13px 12px; }
+  .tara-feature-top > span:last-child { font-size: 6px; letter-spacing: .45px; }
+  .tara-feature-card h3 { margin-top: 19px; font-size: 12px; }
+  .tara-feature-card p { font-size: 9px; }
+  .tara-story-section { grid-template-columns: 1fr; gap: 31px; padding: 69px 20px; }
+  .tara-story-visual { min-height: min(70vw, 370px); }
+  .tara-story-copy { max-width: 560px; }
+  .tara-story-copy h2, .tara-story-copy > p { max-width: 500px; }
+  .tara-steps-grid { grid-template-columns: 1fr; gap: 9px; }
+  .tara-step-card { grid-template-columns: 30px 1fr; min-height: 0; padding: 15px; }
+  .tara-step-card h3 { margin-top: 15px; font-size: 12px; }
+  .tara-step-card p { font-size: 9px; }
+  .tara-closing-section { min-height: 300px; padding: 50px 20px; }
+  .tara-closing-content h2 { font-size: clamp(30px, 7vw, 39px); letter-spacing: -1.5px; }
+  .tara-closing-content p { font-size: 10px; }
+  .tara-closing-seal { right: 17px; bottom: 17px; width: 34px; height: 34px; }
+  .tara-footer { flex-wrap: wrap; gap: 12px 16px; min-height: 0; padding: 22px 20px; }
+  .tara-footer-brand img { width: 108px; }
+  .tara-footer > p { font-size: 8px; }
+  .tara-footer-links { order: 3; gap: 16px; width: 100%; margin: 0; }
+  .tara-footer-copyright { margin-left: auto; font-size: 8px; }
+}
+@media (max-width: 390px) {
+  .tara-hero { padding-right: 15px; padding-left: 15px; }
+  .tara-hero h1 { font-size: clamp(35px, 10vw, 39px); letter-spacing: -2.4px; }
+  .tara-hero-actions { align-items: flex-start; flex-direction: column; }
+  .tara-hero-actions .tara-button-quiet { min-height: 35px; padding-left: 0; }
+  .tara-dashboard { grid-template-columns: 82px minmax(0, 1fr); }
+  .tara-dashboard-sidebar { padding: 11px 5px; }
+  .tara-dashboard-brand { gap: 4px; font-size: 9px; }
+  .tara-dashboard-mark { width: 22px; height: 22px; }
+  .tara-dashboard-nav { gap: 5px; padding: 0 4px; font-size: 7px; }
+  .tara-dashboard-content { padding-right: 8px; padding-left: 8px; }
+  .tara-dashboard-heading h2 { font-size: 12px; }
+  .tara-stat-card > span { font-size: 6px; }
+  .tara-stat-card > b { font-size: 9px; }
+  .tara-stock-status { font-size: 0; }
+  .tara-feature-grid { gap: 7px; }
+  .tara-feature-card { min-height: 185px; padding: 12px 10px; }
+  .tara-feature-top > span:last-child { font-size: 5.5px; }
+  .tara-feature-card h3 { font-size: 11px; }
+  .tara-footer-links { gap: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tara-landing *, .tara-landing *::before, .tara-landing *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}

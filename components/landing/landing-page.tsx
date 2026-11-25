@@ -1,49 +1,56 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
-import InteractiveBrand from '@/components/landing/interactive-brand'
+import { ArrowDown, ArrowRight } from 'lucide-react'
+import LandingDashboardPreview from '@/components/landing/landing-dashboard-preview'
+import LandingSections from '@/components/landing/landing-sections'
 
 function Brand() {
   return (
-    <Link href="/" className="brand" aria-label="Tosmart beranda">
-      <Image src="/tosmart-full.png" alt="Tosmart" width={154} height={58} className="brand-logo" priority />
+    <Link href="/" className="tara-brand" aria-label="Tosmart beranda">
+      <Image src="/tosmart-full.png" alt="Tosmart" width={150} height={58} priority />
     </Link>
+  )
+}
+
+function HeroSection() {
+  return (
+    <section className="tara-hero" aria-labelledby="landing-title">
+      <div className="tara-hero-inner">
+        <div className="tara-hero-copy">
+          <span className="tara-eyebrow"><i aria-hidden="true" /> TEMAN TUMBUH TOKO HARIAN</span>
+          <h1 id="landing-title">Toko lebih rapi.<br /><span>Usaha makin maju.</span></h1>
+          <p>Kasir, stok, pembelian, dan laporan—semua aktivitas toko punya tempatnya di Tosmart.</p>
+          <div className="tara-hero-actions">
+            <Link href="/login" className="tara-button tara-button-primary">Masuk ke Tosmart <ArrowRight size={16} aria-hidden="true" /></Link>
+            <Link href="#fitur" className="tara-button tara-button-quiet">Jelajahi fitur <ArrowDown size={15} aria-hidden="true" /></Link>
+          </div>
+          <div className="tara-hero-footnote"><span className="tara-footnote-mark"><span /><span /><span /></span><span>Lebih teratur, tanpa menambah rumit harimu.</span></div>
+        </div>
+        <div className="tara-hero-visual"><LandingDashboardPreview /></div>
+      </div>
+      <div className="tara-hero-bottom" aria-label="Fitur utama Tosmart">
+        <span><i aria-hidden="true" /> KASIR</span><span><i aria-hidden="true" /> PRODUK & STOK</span><span><i aria-hidden="true" /> PEMBELIAN</span><span><i aria-hidden="true" /> LAPORAN</span>
+      </div>
+    </section>
   )
 }
 
 export default function LandingPage() {
   return (
-    <main className="landing landing-simplified">
-      <header className="site-header">
-        <div className="site-header-inner">
+    <main className="tara-landing">
+      <header className="tara-header">
+        <div className="tara-header-inner">
           <Brand />
-          <div className="header-actions">
-            <Link className="button button-green header-cta" href="/login">
-              Masuk <ArrowRight size={16} />
-            </Link>
-          </div>
+          <nav className="tara-nav" aria-label="Navigasi utama">
+            <Link href="#fitur">Fitur</Link>
+            <Link href="#manfaat">Manfaat</Link>
+            <Link href="#cara-kerja">Cara kerja</Link>
+          </nav>
+          <Link className="tara-header-cta" href="/login">Masuk <ArrowRight size={15} aria-hidden="true" /></Link>
         </div>
       </header>
-      <section className="hero-section" aria-labelledby="landing-title">
-        <div className="hero-inner">
-          <div className="hero-copy">
-            <span className="section-kicker">SELAMAT DATANG DI TOSMART APP</span>
-            <h1 id="landing-title">Belanja tanpa drama,<br /><span>transaksi tanpa ribet.</span></h1>
-            <p className="hero-description">
-              Karena waktu lebih baik dihabiskan untuk melayani pelanggan, bukan untuk mengurus transaksi yang rumit.
-            </p>
-            <div className="hero-buttons">
-              <Link href="/login" className="button button-green button-large">
-                Masuk ke akun <ArrowRight size={17} />
-              </Link>
-              <Link href="#brand-feature" className="button button-outline button-large">Kenali Tosmart</Link>
-            </div>
-          </div>
-          <div className="hero-visual">
-            <InteractiveBrand variant="landing" />
-          </div>
-        </div>
-      </section>
+      <HeroSection />
+      <LandingSections />
     </main>
   )
 }
