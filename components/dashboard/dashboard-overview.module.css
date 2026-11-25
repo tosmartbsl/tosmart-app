@@ -1,13 +1,13 @@
 .page {
-  --chart-1: #6e61f6;
-  --chart-2: #17a98f;
-  --chart-3: #ff805f;
-  --chart-4: #f1b744;
-  --chart-5: #4d93e8;
+  --chart-1: #805a3c;
+  --chart-2: #a27b5a;
+  --chart-3: #bd9878;
+  --chart-4: #d6c0aa;
+  --chart-5: #68482f;
   max-width: 1560px;
   padding: 28px clamp(18px, 2.5vw, 38px) 28px;
   margin: 0 auto;
-  color: #312b40;
+  color: #3f3025;
 }
 
 .pageHeader,
@@ -34,19 +34,19 @@
 
 .breadcrumb {
   gap: 7px;
-  color: #a3a1b1;
+  color: #9f9182;
   font-size: 9px;
   font-weight: 750;
   letter-spacing: 1px;
 }
 
 .breadcrumb svg {
-  color: #c4c1ce;
+  color: #cbb9a7;
 }
 
 .eyebrow {
   margin: 12px 0 3px;
-  color: #7668ee;
+  color: #916a47;
   font-size: 9px;
   font-weight: 800;
   letter-spacing: 1.15px;
@@ -54,7 +54,7 @@
 
 .pageHeader h1 {
   margin: 0;
-  color: #302a3d;
+  color: #392c22;
   font-size: clamp(25px, 2.2vw, 31px);
   font-weight: 760;
   letter-spacing: -1.1px;
@@ -62,7 +62,7 @@
 
 .greeting {
   margin: 6px 0 0;
-  color: #858394;
+  color: #887b70;
   font-size: 12px;
 }
 
@@ -80,10 +80,10 @@
   gap: 8px;
   min-height: 40px;
   padding: 0 13px;
-  border: 1px solid #e9e8f0;
+  border: 1px solid #e7ddd3;
   border-radius: 11px;
   background: #fff;
-  color: #6d6b7d;
+  color: #786a5e;
   font-size: 11px;
   font-weight: 650;
   transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
@@ -91,13 +91,13 @@
 
 .rangeControl:focus-within,
 .exportButton:focus-visible {
-  outline: 3px solid #6e61f633;
+  outline: 3px solid #805a3c33;
   outline-offset: 2px;
 }
 
 .rangeControl svg {
   flex: none;
-  color: #7769ee;
+  color: #916945;
 }
 
 .rangeControl select {
@@ -112,16 +112,16 @@
 }
 
 .exportButton {
-  border-color: #6e61f6;
-  background: #6e61f6;
+  border-color: #805a3c;
+  background: linear-gradient(120deg, #68482f, #a27b5a);
   color: #fff;
   cursor: pointer;
 }
 
 .exportButton:hover {
-  border-color: #5a4de0;
-  background: #5a4de0;
-  box-shadow: 0 7px 16px #6e61f62b;
+  border-color: #68482f;
+  background: linear-gradient(120deg, #5c3e29, #8c6547);
+  box-shadow: 0 7px 16px #805a3c2b;
   transform: translateY(-1px);
 }
 
@@ -132,9 +132,9 @@
   min-height: 78px;
   padding: 14px 19px;
   margin-bottom: 14px;
-  border: 1px solid #dfe5ff;
+  border: 1px solid #e6d8ca;
   border-radius: 16px;
-  background: linear-gradient(105deg, #eeefff 0%, #edf8f7 62%, #fff7ec 100%);
+  background: linear-gradient(105deg, #f1e6db 0%, #f6efe8 56%, #fbf5ee 100%);
 }
 
 .briefing::after {
@@ -143,7 +143,7 @@
   right: 105px;
   width: 154px;
   height: 154px;
-  border: 1px solid #6e61f620;
+  border: 1px solid #805a3c20;
   border-radius: 50%;
   content: '';
   pointer-events: none;
@@ -156,9 +156,9 @@
   width: 42px;
   height: 42px;
   border-radius: 13px;
-  background: #fff;
-  color: #6e61f6;
-  box-shadow: 0 5px 16px #5e55a315;
+  background: #fffaf5;
+  color: #805a3c;
+  box-shadow: 0 5px 16px #76513715;
 }
 
 .briefingCopy {
@@ -169,7 +169,7 @@
 }
 
 .briefingCopy strong {
-  color: #38314f;
+  color: #49382b;
   font-size: 12px;
   font-weight: 760;
 }
@@ -177,7 +177,7 @@
 .briefingCopy p {
   max-width: 800px;
   margin: 5px 0 0;
-  color: #77778d;
+  color: #7e7063;
   font-size: 10px;
   line-height: 1.6;
 }
@@ -189,7 +189,7 @@
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  color: #6557e4;
+  color: #805a3c;
   font-size: 10px;
   font-weight: 750;
   text-decoration: none;
@@ -208,7 +208,7 @@
 .panelTextAction:hover,
 .emptyState a:hover,
 .chartEmptyNote a:hover {
-  color: #493aca;
+  color: #5d3f29;
 }
 
 .metricsGrid {
@@ -224,21 +224,21 @@
   min-width: 0;
   min-height: 132px;
   padding: 15px 16px 14px;
-  border: 1px solid #ebeaf3;
+  border: 1px solid #e8ded4;
   border-radius: 16px;
-  background: linear-gradient(145deg, #fff 15%, #f7f6ff 100%);
-  box-shadow: 0 5px 18px #3b325009;
+  background: linear-gradient(145deg, #fff 12%, #f7f0e9 100%);
+  box-shadow: 0 5px 18px #49332209;
   transition: box-shadow .2s ease, transform .2s ease;
 }
 
 .metricCard:hover {
-  box-shadow: 0 12px 25px #3b325012;
+  box-shadow: 0 12px 25px #49332212;
   transform: translateY(-2px);
 }
 
-.metricTeal { background: linear-gradient(145deg, #fff 15%, #effaf7 100%); }
-.metricBlue { background: linear-gradient(145deg, #fff 15%, #f0f6ff 100%); }
-.metricOrange { background: linear-gradient(145deg, #fff 15%, #fff7ed 100%); }
+.metricTeal { background: linear-gradient(145deg, #fff 12%, #f3e8dc 100%); }
+.metricBlue { background: linear-gradient(145deg, #fff 12%, #eee5dc 100%); }
+.metricOrange { background: linear-gradient(145deg, #fff 12%, #f8eee3 100%); }
 
 .metricHeader {
   position: relative;
@@ -250,7 +250,7 @@
 }
 
 .metricLabel {
-  color: #777587;
+  color: #776a5d;
   font-size: 10px;
   font-weight: 650;
 }
@@ -262,13 +262,13 @@
   width: 33px;
   height: 33px;
   border-radius: 11px;
-  background: #eeecff;
-  color: #6e61f6;
+  background: #efe3d8;
+  color: #805a3c;
 }
 
-.metricTeal .metricIcon { background: #e3f7f1; color: #128b74; }
-.metricBlue .metricIcon { background: #e9f1ff; color: #437ed2; }
-.metricOrange .metricIcon { background: #fff0de; color: #d38a2e; }
+.metricTeal .metricIcon { background: #eee1d4; color: #76553b; }
+.metricBlue .metricIcon { background: #e9dfd5; color: #8a6949; }
+.metricOrange .metricIcon { background: #f4e7d9; color: #9a704b; }
 
 .metricContent {
   position: relative;
@@ -279,7 +279,7 @@
 .metricValue {
   display: block;
   overflow: hidden;
-  color: #312b40;
+  color: #3f3025;
   font-size: clamp(20px, 2vw, 25px);
   font-weight: 780;
   letter-spacing: -.8px;
@@ -293,7 +293,7 @@
   align-items: center;
   gap: 6px;
   margin-top: 8px;
-  color: #9694a3;
+  color: #9a8f84;
   font-size: 9px;
 }
 
@@ -303,14 +303,14 @@
   gap: 2px;
   padding: 4px 7px;
   border-radius: 999px;
-  background: #eaf8f3;
-  color: #188b6c;
+  background: #f1e9e0;
+  color: #78573b;
   font-size: 8px;
   font-weight: 750;
 }
 
-.trendDown { background: #fff0ed; color: #d35f4b; }
-.trendFlat { background: #f1f0f6; color: #797789; }
+.trendDown { background: #f5e9df; color: #9a6041; }
+.trendFlat { background: #ede7e0; color: #7b7066; }
 
 .metricDecoration {
   position: absolute;
@@ -318,14 +318,14 @@
   bottom: -57px;
   width: 112px;
   height: 112px;
-  border: 1px solid #6e61f615;
+  border: 1px solid #805a3c15;
   border-radius: 50%;
 }
 
 .metricDecoration::after {
   position: absolute;
   inset: 12px;
-  border: 1px dashed #6e61f61f;
+  border: 1px dashed #805a3c1f;
   border-radius: 50%;
   content: '';
 }
@@ -341,10 +341,10 @@
 .panel {
   min-width: 0;
   padding: 17px;
-  border: 1px solid #ebeaf2;
+  border: 1px solid #e8ded4;
   border-radius: 16px;
   background: #fff;
-  box-shadow: 0 5px 18px #3b325008;
+  box-shadow: 0 5px 18px #49332208;
 }
 
 .panelHeader {
@@ -354,7 +354,7 @@
 }
 
 .panelTitle {
-  color: #363047;
+  color: #3f3025;
   font-size: 13px;
   font-weight: 760;
 }
@@ -368,7 +368,7 @@
 
 .panelDescription {
   margin-top: 5px;
-  color: #9997a6;
+  color: #96897d;
   font-size: 9px;
   line-height: 1.5;
 }
@@ -384,15 +384,15 @@
   place-items: center;
   width: 30px;
   height: 30px;
-  border: 1px solid #efedf6;
+  border: 1px solid #e7ddd3;
   border-radius: 9px;
-  background: #faf9ff;
-  color: #7769ee;
+  background: #f8f4f0;
+  color: #916945;
   transition: background .18s ease, color .18s ease;
 }
 
 .panelAction:hover {
-  background: #6e61f6;
+  background: #805a3c;
   color: white;
 }
 
@@ -403,7 +403,7 @@
 }
 
 .chartSummary > strong {
-  color: #312b40;
+  color: #3f3025;
   font-size: 21px;
   font-weight: 780;
   letter-spacing: -.65px;
@@ -415,15 +415,15 @@
   gap: 2px;
   padding: 4px 7px;
   border-radius: 999px;
-  background: #eaf8f3;
-  color: #16886c;
+  background: #f1e9e0;
+  color: #78573b;
   font-size: 8px;
   font-weight: 750;
 }
 
-.summaryDown { background: #fff0ed; color: #d35f4b; }
-.summaryFlat { background: #f1f0f6; color: #797789; }
-.summaryCaption { color: #a09eab; font-size: 9px; }
+.summaryDown { background: #f5e9df; color: #9a6041; }
+.summaryFlat { background: #ede7e0; color: #7b7066; }
+.summaryCaption { color: #9a8e82; font-size: 9px; }
 
 .legend {
   flex-wrap: wrap;
@@ -436,7 +436,7 @@
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  color: #9290a0;
+  color: #908477;
   font-size: 8px;
   white-space: nowrap;
 }
@@ -459,7 +459,7 @@
 }
 
 .salesChart :global(.recharts-cartesian-axis-tick_text) {
-  fill: #9997a6;
+  fill: #96897d;
   font-family: inherit;
   font-size: 9px;
 }
@@ -470,7 +470,7 @@
   justify-content: center;
   gap: 5px;
   margin: -3px 0 3px;
-  color: #9896a5;
+  color: #978a7e;
   font-size: 9px;
 }
 
@@ -511,14 +511,14 @@
 }
 
 .donutCenter span {
-  color: #9997a6;
+  color: #96897d;
   font-size: 8px;
 }
 
 .donutCenter strong {
   max-width: 100%;
   overflow: hidden;
-  color: #39334b;
+  color: #49382b;
   font-size: 13px;
   font-weight: 780;
   letter-spacing: -.3px;
@@ -527,7 +527,7 @@
 }
 
 .donutCenterEmpty strong {
-  color: #8f8c9d;
+  color: #8a7d70;
   font-size: 11px;
 }
 
@@ -548,7 +548,7 @@
   border: 0;
   border-radius: 8px;
   background: transparent;
-  color: #777587;
+  color: #786b5f;
   text-align: left;
   cursor: pointer;
   transition: background .16s ease, color .16s ease;
@@ -556,8 +556,8 @@
 
 .categoryRow:hover,
 .categoryRowActive {
-  background: #f5f4ff;
-  color: #4e43bb;
+  background: #f2e9e0;
+  color: #6c4d32;
 }
 
 .categoryName {
@@ -574,7 +574,7 @@
 }
 
 .categoryRow strong {
-  color: #555164;
+  color: #65594d;
   font-size: 9px;
   font-weight: 720;
   white-space: nowrap;
@@ -584,8 +584,8 @@
   padding: 5px 8px;
   border: 0;
   border-radius: 7px;
-  background: #f2f0ff;
-  color: #6557e4;
+  background: #f0e6dc;
+  color: #805a3c;
   font: inherit;
   font-size: 9px;
   font-weight: 700;
@@ -611,7 +611,7 @@
   gap: 10px;
   min-height: 54px;
   padding: 8px 1px;
-  border-top: 1px solid #f0eff5;
+  border-top: 1px solid #eee5dc;
 }
 
 .productRank {
@@ -621,16 +621,16 @@
   width: 30px;
   height: 30px;
   border-radius: 10px;
-  background: #efedff;
-  color: #6e61f6;
+  background: #efe3d8;
+  color: #805a3c;
   font-size: 9px;
   font-weight: 800;
 }
 
-.rank2 { background: #e5f8f2; color: #168c74; }
-.rank3 { background: #fff0e9; color: #d77758; }
-.rank4 { background: #fff6df; color: #ba8420; }
-.rank5 { background: #eaf2ff; color: #4c80cd; }
+.rank2 { background: #f0e7df; color: #78573b; }
+.rank3 { background: #f3e6da; color: #946548; }
+.rank4 { background: #f4eadf; color: #8c6846; }
+.rank5 { background: #ece4db; color: #846449; }
 
 .productInfo,
 .stockInfo {
@@ -643,7 +643,7 @@
 .productInfo strong,
 .stockInfo strong {
   overflow: hidden;
-  color: #4b465d;
+  color: #514235;
   font-size: 10px;
   font-weight: 700;
   text-overflow: ellipsis;
@@ -653,21 +653,21 @@
 .productInfo small,
 .stockInfo small {
   overflow: hidden;
-  color: #9997a6;
+  color: #96897d;
   font-size: 8px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .productUnits {
-  color: #9290a0;
+  color: #908477;
   font-size: 9px;
   white-space: nowrap;
 }
 
 .productRevenue {
   min-width: 76px;
-  color: #423c56;
+  color: #49382c;
   font-size: 9px;
   font-weight: 740;
   text-align: right;
@@ -677,8 +677,8 @@
 .stockCount {
   padding: 6px 9px;
   border-radius: 999px;
-  background: #fff3e5;
-  color: #bd7828;
+  background: #f4eadd;
+  color: #936746;
   font-size: 8px;
   font-weight: 750;
   white-space: nowrap;
@@ -688,12 +688,12 @@
   gap: 9px;
   min-height: 54px;
   padding: 8px 1px;
-  border-top: 1px solid #f0eff5;
+  border-top: 1px solid #eee5dc;
   color: inherit;
   text-decoration: none;
 }
 
-.stockRow:hover .stockInfo strong { color: #6656e3; }
+.stockRow:hover .stockInfo strong { color: #805a3c; }
 
 .stockIcon,
 .emptyIcon {
@@ -703,29 +703,29 @@
   width: 31px;
   height: 31px;
   border-radius: 10px;
-  background: #fff0df;
-  color: #cf842f;
+  background: #f2e7dc;
+  color: #916746;
 }
 
 .stockValue {
   display: grid;
   justify-items: end;
   gap: 2px;
-  color: #d26f4e;
+  color: #906142;
   font-size: 12px;
   font-weight: 800;
   white-space: nowrap;
 }
 
 .stockValue small {
-  color: #a19eac;
+  color: #95897e;
   font-size: 7px;
   font-weight: 550;
 }
 
 .stockArrow {
   flex: none;
-  color: #aaa7b5;
+  color: #a39588;
 }
 
 .emptyState {
@@ -740,21 +740,21 @@
   width: 39px;
   height: 39px;
   margin-bottom: 10px;
-  background: #eeecff;
-  color: #6e61f6;
+  background: #efe3d8;
+  color: #805a3c;
 }
 
-.emptyIconSafe { background: #e5f8f2; color: #168c74; }
+.emptyIconSafe { background: #f0e7df; color: #78573b; }
 
 .emptyState strong {
-  color: #514b62;
+  color: #514235;
   font-size: 10px;
 }
 
 .emptyState p {
   max-width: 240px;
   margin: 6px 0 9px;
-  color: #9997a6;
+  color: #96897d;
   font-size: 9px;
   line-height: 1.5;
 }
@@ -763,7 +763,7 @@
   justify-content: space-between;
   gap: 12px;
   padding: 17px 2px 0;
-  color: #9694a3;
+  color: #9a8f84;
   font-size: 8px;
 }
 
@@ -778,8 +778,8 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #21b387;
-  box-shadow: 0 0 0 3px #21b3871a;
+  background: #9a7656;
+  box-shadow: 0 0 0 3px #9a76561a;
 }
 
 .dashboardFooter button {
@@ -787,13 +787,13 @@
   border: 0;
   border-radius: 5px;
   background: transparent;
-  color: #6659e2;
+  color: #805a3c;
   font: inherit;
   font-weight: 700;
   cursor: pointer;
 }
 
-.dashboardFooter button:hover { background: #f1efff; }
+.dashboardFooter button:hover { background: #f1e8df; }
 .dashboardFooter button:focus-visible,
 .categoryRow:focus-visible,
 .clearCategory:focus-visible,
@@ -801,7 +801,7 @@
 .panelAction:focus-visible,
 .briefingLink:focus-visible,
 .stockRow:focus-visible {
-  outline: 3px solid #6e61f644;
+  outline: 3px solid #805a3c44;
   outline-offset: 2px;
 }
 
