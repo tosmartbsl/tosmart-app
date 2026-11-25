@@ -35,6 +35,7 @@ export default function PhaseTwoWorkspace() {
   const [user, setUser] = useState<User | null>(null)
   const [ready, setReady] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const [products, setProducts] = useState<Product[]>(seedProducts)
   const [categories, setCategories] = useState<string[]>(ensureToscoCategory(seedCategories.slice(1)))
   const [query, setQuery] = useState('')
@@ -107,7 +108,7 @@ export default function PhaseTwoWorkspace() {
   }
   if (!ready || !user) return <div className="app-loading">Menyiapkan Tosmart…</div>
   const title = isPos ? 'Kasir POS' : isCatalog ? 'Kategori & Master Data' : 'Manajemen produk'
-  return <div className="dashboard-app"><AppSidebar open={menuOpen} onClose={() => setMenuOpen(false)} user={user}/><div className="app-main"><Topbar user={user} onMenu={() => setMenuOpen(true)}/><main className={`dashboard-content phase-content ${isPos ? 'pos-content' : ''}`}>
+  return <div className={`dashboard-app${sidebarCollapsed ? ' sidebar-collapsed' : ''}`}><AppSidebar open={menuOpen} onClose={() => setMenuOpen(false)} user={user} collapsed={sidebarCollapsed} onToggle={() => setSidebarCollapsed(current => !current)}/><div className="app-main"><Topbar user={user} onMenu={() => setMenuOpen(true)}/><main className={`dashboard-content phase-content ${isPos ? 'pos-content' : ''}`}>
     <div className="dashboard-heading phase-heading"><div><div className="breadcrumb"><Link href="/dashboard">OPERASIONAL TOKO</Link><span>›</span><span>{title.toUpperCase()}</span></div><h1>{title}</h1><p>{isPos ? 'Proses transaksi dengan cepat dan akurat.' : isCatalog ? 'Kelola kategori dan data katalog tokomu.' : 'Atur katalog, harga, dan ketersediaan produk.'}</p></div>{!isPos && !isCatalog && <button className="export-button" onClick={() => openForm()}><Plus size={15}/> Tambah produk</button>}</div>
     {isPos ? <div className="pos-layout"><section className="pos-catalog"><div className="pos-search"><Search size={17}/><input aria-label="Cari nama atau SKU produk" placeholder="Cari nama produk atau SKU…" value={query} onChange={e => setQuery(e.target.value)}/><Barcode size={18}/></div><div className="pos-category-navigation">
                 <div className="pos-categories" role="group" aria-label="Filter kategori produk">{['Semua produk', ...categories.filter(item => item !== TOSCO_CATEGORY)].map(item => <button key={item} aria-pressed={category === item} className={category === item ? 'selected' : ''} onClick={() => setCategory(item)}>{item}</button>)}</div>
