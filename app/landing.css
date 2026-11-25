@@ -25,7 +25,7 @@
 .tara-hero-copy { position: relative; z-index: 2; padding: 0 0 32px; }
 .tara-eyebrow { display: inline-flex; align-items: center; gap: 9px; color: #896443; font-size: 9px; font-weight: 750; letter-spacing: 1.35px; }
 .tara-eyebrow > i { width: 7px; height: 7px; border-radius: 50%; background: #a9784d; box-shadow: 0 0 0 4px #a9784d1a; }
-.tara-hero h1 { max-width: 620px; margin: 23px 0 18px; color: #332318; font-size: clamp(44px, 4vw, 52px); font-weight: 600; line-height: 1.04; letter-spacing: -3px; }
+.tara-hero h1 { max-width: 620px; margin: 23px 0 18px; color: #332318; font-size: clamp(42px, 3.5vw, 46px); font-weight: 600; line-height: 1.04; letter-spacing: -2.8px; }
 .tara-hero h1 span { color: #a17148; }
 .tara-hero-copy > p { max-width: 435px; margin: 0; color: #796b5f; font-size: 14px; line-height: 1.85; }
 .tara-hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 27px; }
@@ -159,13 +159,19 @@
 @media (max-width: 1050px) {
   .tara-header-inner { width: calc(100% - 48px); }
   .tara-hero { padding: 55px 24px 0; }
-  .tara-hero-inner { grid-template-columns: .83fr 1.17fr; gap: 28px; min-height: 490px; }
-  .tara-hero h1 { font-size: clamp(40px, 4.5vw, 48px); letter-spacing: -3px; }
+  .tara-hero-inner { grid-template-columns: .95fr 1.05fr; gap: 28px; min-height: 490px; }
+  .tara-hero h1 { font-size: clamp(36px, 3.7vw, 40px); letter-spacing: -2.5px; }
   .tara-dashboard { grid-template-columns: 115px minmax(0, 1fr); min-height: 410px; }
   .tara-dashboard-sidebar { padding-right: 9px; padding-left: 9px; }
   .tara-dashboard-content { padding-right: 13px; padding-left: 13px; }
   .tara-story-section { gap: 48px; padding-right: 42px; padding-left: 42px; }
   .tara-story-visual { min-height: 355px; }
+}
+@media (max-width: 900px) {
+  .tara-hero-inner { grid-template-columns: 1fr; gap: 24px; min-height: 0; }
+  .tara-hero-copy { max-width: 620px; }
+  .tara-hero h1 { font-size: clamp(42px, 6vw, 54px); letter-spacing: -3px; }
+  .tara-hero-visual { width: min(100%, 720px); margin: 0 auto; }
 }
 @media (max-width: 760px) {
   .tara-header { height: 66px; }
