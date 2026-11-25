@@ -576,7 +576,7 @@ export default function DashboardOverview({ user }: { user: User }) {
                     <stop offset="95%" stopColor="var(--color-sales)" stopOpacity={0.015} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid vertical={false} strokeDasharray="4 4" stroke="#e8eaf1" />
+                <CartesianGrid vertical={false} strokeDasharray="4 4" stroke="#e8ded4" />
                 <XAxis
                   dataKey="label"
                   tickLine={false}
