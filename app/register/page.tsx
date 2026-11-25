@@ -1,2 +1,5 @@
-import AuthPage from '@/components/auth/auth-page'
-export default function RegisterPage(){return <AuthPage mode="register"/>}
+import { redirect } from 'next/navigation'
+
+export default function RegisterPage() {
+  redirect('/login')
+}
