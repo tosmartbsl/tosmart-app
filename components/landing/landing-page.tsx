@@ -17,12 +17,12 @@ function HeroSection() {
     <section className="tara-hero" aria-labelledby="landing-title">
       <div className="tara-hero-inner">
         <div className="tara-hero-copy">
-          <span className="tara-eyebrow"><i aria-hidden="true" /> TEMAN TUMBUH TOKO HARIAN</span>
-          <h1 id="landing-title">Toko lebih rapi.<br /><span>Usaha makin maju.</span></h1>
-          <p>Kasir, stok, pembelian, dan laporan—semua aktivitas toko punya tempatnya di Tosmart.</p>
+          <span className="tara-eyebrow"><i aria-hidden="true" /> SELAMAT DATANG DI TOSMART APP</span>
+          <h1 id="landing-title">Belanja tanpa drama,<br /><span>transaksi tanpa ribet.</span></h1>
+          <p>Karena waktu lebih baik dihabiskan untuk melayani pelanggan, bukan untuk mengurus transaksi yang rumit.</p>
           <div className="tara-hero-actions">
-            <Link href="/login" className="tara-button tara-button-primary">Masuk ke Tosmart <ArrowRight size={16} aria-hidden="true" /></Link>
-            <Link href="#fitur" className="tara-button tara-button-quiet">Jelajahi fitur <ArrowDown size={15} aria-hidden="true" /></Link>
+            <Link href="/login" className="tara-button tara-button-primary">Masuk ke akun <ArrowRight size={16} aria-hidden="true" /></Link>
+            <Link href="#fitur" className="tara-button tara-button-quiet">Kenali Tosmart <ArrowDown size={15} aria-hidden="true" /></Link>
           </div>
           <div className="tara-hero-footnote"><span className="tara-footnote-mark"><span /><span /><span /></span><span>Lebih teratur, tanpa menambah rumit harimu.</span></div>
         </div>

@@ -12,8 +12,8 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'Tosmart | Operasional Toko Lebih Teratur',
-  description: 'Kelola kasir, produk, stok, pembelian, dan laporan toko dalam satu aplikasi yang praktis bersama Tosmart.',
+  title: 'Tosmart App | Belanja tanpa drama, transaksi tanpa ribet',
+  description: 'Tosmart membantu operasional toko agar waktumu lebih banyak untuk melayani pelanggan, bukan mengurus transaksi yang rumit.',
   generator: 'v0.app',
   icons: {
     icon: '/tosmart-full.png',
