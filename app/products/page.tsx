@@ -1,5 +1,5 @@
-import PhaseTwoWorkspace from '@/components/dashboard/phase-two-workspace'
+import { redirect } from 'next/navigation'
 
 export default function ProductsPage() {
-  return <PhaseTwoWorkspace />
+  redirect('/inventory')
 }

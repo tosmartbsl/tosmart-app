@@ -1,3 +1,5 @@
-import PhaseThreeWorkspace from '@/components/dashboard/phase-three-workspace'
+import { redirect } from 'next/navigation'
 
-export default function InventoryTransfersPage() { return <PhaseThreeWorkspace /> }
+export default function InventoryTransfersPage() {
+  redirect('/inventory')
+}
