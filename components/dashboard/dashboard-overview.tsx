@@ -23,6 +23,7 @@ import {
   Package,
   RotateCw,
   ShoppingBasket,
+  ShoppingCart,
   Sparkles,
   TriangleAlert,
   TrendingUp,
@@ -75,9 +76,10 @@ type Sale = {
   cashier?: string
   items?: SaleItem[]
 }
+type Purchase = { id: string; supplier: string; date: string; total: number; status?: string }
 type Range = 'today' | 'week' | 'month' | 'year'
 type DateWindow = { start: Date; end: Date }
-type DashboardSnapshot = { sales: Sale[]; products: Product[]; categories: string[] }
+type DashboardSnapshot = { sales: Sale[]; purchases: Purchase[]; products: Product[]; categories: string[] }
 type Trend = { label: string; direction: 'up' | 'down' | 'flat' }
 type Metric = {
   label: string
@@ -143,6 +145,7 @@ function loadDashboardSnapshot(): DashboardSnapshot {
   const savedCategories = readStoredArray<string>('tosmart-categories')
   return {
     sales: readStoredArray<Sale>('tosmart-sales'),
+    purchases: readStoredArray<Purchase>('tosmart-purchases'),
     products: readStoredArray<Product>('tosmart-products'),
     categories: savedCategories.length ? savedCategories : DEFAULT_CATEGORIES,
   }
@@ -343,6 +346,7 @@ function MetricCard({ metric }: { metric: Metric }) {
 export default function DashboardOverview({ user }: { user: User }) {
   const [range, setRange] = useState<Range>('week')
   const [sales, setSales] = useState<Sale[]>([])
+  const [purchases, setPurchases] = useState<Purchase[]>([])
   const [products, setProducts] = useState<Product[]>([])
   const [storedCategories, setStoredCategories] = useState<string[]>(DEFAULT_CATEGORIES)
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
@@ -352,6 +356,7 @@ export default function DashboardOverview({ user }: { user: User }) {
   const refreshDashboard = useCallback(() => {
     const snapshot = loadDashboardSnapshot()
     setSales(snapshot.sales)
+    setPurchases(snapshot.purchases)
     setProducts(snapshot.products)
     setStoredCategories(snapshot.categories)
     const refreshedAt = new Date()
@@ -379,6 +384,10 @@ export default function DashboardOverview({ user }: { user: User }) {
   const previousRevenue = useMemo(() => previousSales.reduce((total, sale) => total + saleTotal(sale), 0), [previousSales])
   const currentProfit = useMemo(() => profitForSales(currentSales, productsById, productsBySku), [currentSales, productsById, productsBySku])
   const previousProfit = useMemo(() => profitForSales(previousSales, productsById, productsBySku), [previousSales, productsById, productsBySku])
+  const currentPurchases = useMemo(() => purchases.filter((purchase) => { const date = new Date(purchase.date); return purchase.status !== 'Cancelled' && !Number.isNaN(date.getTime()) && date >= windows.current.start && date < windows.current.end }), [purchases, windows])
+  const previousPurchases = useMemo(() => purchases.filter((purchase) => { const date = new Date(purchase.date); return purchase.status !== 'Cancelled' && !Number.isNaN(date.getTime()) && date >= windows.previous.start && date < windows.previous.end }), [purchases, windows])
+  const currentPurchaseTotal = currentPurchases.reduce((total, purchase) => total + Number(purchase.total || 0), 0)
+  const previousPurchaseTotal = previousPurchases.reduce((total, purchase) => total + Number(purchase.total || 0), 0)
   const lowStockProducts = useMemo(() => products
     .filter((product) => product.status !== false && Number.isFinite(Number(product.stock)) && Number(product.stock) <= Number(product.min || 0))
     .sort((first, second) => Number(first.stock) - Number(second.stock)), [products])
@@ -481,6 +490,14 @@ export default function DashboardOverview({ user }: { user: User }) {
       icon: TriangleAlert,
       tone: 'orange',
     },
+    {
+      label: 'Nilai pembelian',
+      value: formatCurrency(currentPurchaseTotal),
+      note: `${formatNumber(currentPurchases.length)} pesanan dalam periode`,
+      icon: ShoppingCart,
+      tone: 'violet',
+      trend: makeTrend(currentPurchaseTotal, previousPurchaseTotal),
+    },
   ]
   const periodLabel = RANGE_OPTIONS.find((option) => option.value === range)?.label || '7 hari terakhir'
   const greeting = now.getHours() < 11 ? 'Selamat pagi' : now.getHours() < 15 ? 'Selamat siang' : now.getHours() < 19 ? 'Selamat sore' : 'Selamat malam'
@@ -497,6 +514,7 @@ export default function DashboardOverview({ user }: { user: User }) {
       ['Transaksi', formatNumber(currentSales.length)],
       ['Estimasi laba kotor', formatCurrency(currentProfit)],
       ['Stok menipis', formatNumber(lowStockProducts.length)],
+      ['Nilai pembelian', formatCurrency(currentPurchaseTotal)],
       ['', ''],
       ['Penjualan per kategori', 'Omzet'],
       ...categoryTotals.map((category) => [category.name, formatCurrency(category.amount)]),
