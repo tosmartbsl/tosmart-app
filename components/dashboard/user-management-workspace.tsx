@@ -11,11 +11,11 @@ type SessionUser = { name: string; email: string; role: string }
 type ManagedAccount = { id: string; name: string; email: string; role: string; active: boolean }
 type AccountFilter = 'Semua status' | 'Aktif' | 'Nonaktif'
 
-const roles = ['Super Admin', 'Admin', 'Manajer', 'Kasir', 'Staf inventori']
+const roles = ['Super Admin', 'Admin', 'Manajer', 'Kasir', 'Barista']
 const initialAccounts: ManagedAccount[] = [
   { id: 'USR-001', name: 'Andi Saputra', email: 'admin@retailpos.com', role: 'Super Admin', active: true },
   { id: 'USR-002', name: 'Rina Putri', email: 'cashier@retailpos.com', role: 'Kasir', active: true },
-  { id: 'USR-003', name: 'Maya Lestari', email: 'maya@tosmart.id', role: 'Staf inventori', active: false },
+  { id: 'USR-003', name: 'Maya Lestari', email: 'maya@tosmart.id', role: 'Barista', active: false },
 ]
 
 export default function UserManagementWorkspace() {
